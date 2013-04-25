@@ -179,7 +179,7 @@ int do_start_scheduling(message *m_ptr)
 	rmp->endpoint     = m_ptr->SCHEDULING_ENDPOINT;
 	rmp->parent       = m_ptr->SCHEDULING_PARENT;
 	rmp->max_priority = (unsigned) m_ptr->SCHEDULING_MAXPRIO;
-	rmp->ticketN = 5;
+	rmp->num_tickets = 5;
 
 	if (rmp->max_priority >= NR_SCHED_QUEUES) {
 		return EINVAL;
@@ -301,7 +301,7 @@ int do_nice(message *m_ptr)
 	old_q     = rmp->priority;
 	old_max_q = rmp->max_priority;
 	// ??????
-	old_ticketN = rmp->ticketN;
+	old_ticketN = rmp->num_tickets;
 
 	/* Update the proc entry and reschedule the process */
 	//rmp->max_priority = rmp->priority = new_q;
@@ -313,10 +313,10 @@ int do_nice(message *m_ptr)
 		 * back the changes to proc struct */
 		rmp->priority     = old_q;
 		rmp->max_priority = old_max_q;
-		rmp->ticketN = old_ticketN;
+		rmp->num_tickets = old_ticketN;
 	}
 
-	printf("---------------- result of do_nice %d\n", rmp->ticketN);
+	printf("---------------- result of do_nice %d\n", rmp->num_tickets);
 
 	//return rv;
 	return do_lottery();
@@ -419,20 +419,20 @@ static void balance_queues(struct timer *tp)
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
  			if (USER_Q == rmp->priority) {
- 				nTickets += rmp->ticketN;
+ 				nTickets += rmp->num_tickets;
  			}
  		}
  	}
  
- 	lucky = nTickets ? rand() % nTickets : 0;
+ 	lucky = nTickets ? random() % nTickets : 0;
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
  				USER_Q == rmp->priority) {
  			old_priority = rmp->priority;
  			if (lucky >= 0) {
- 				lucky -= rmp->ticketN;
+ 				lucky -= rmp->num_tickets;
  				//
- 				   printf("-------------- lucky - %d = %d\n", rmp->ticketN, lucky);
+ 				   printf("-------------- lucky - %d = %d\n", rmp->num_tickets, lucky);
  				//
  				if (lucky < 0) {
  					rmp->priority = MAX_USER_Q;
@@ -451,18 +451,5 @@ static void balance_queues(struct timer *tp)
  	printf("------------- do_lottery OK? %d lucky=%d\n", flag, lucky);
  	//
  	return nTickets ? flag : OK;
- }
- 
- /*===========================================================================*
-  *				set_priority				     *
-  *===========================================================================*/
- int set_priority(int ntickets, struct schedproc* p)
- {
- 	int add;
- 
- 	add = p->ticketN + ntickets > 100 ? 100 - p->ticketN : ntickets;
- 	add = p->ticketN + ntickets < 1 ? 1 - p->ticketN: add;
- 	p->ticketN += add;
- 	return add;
  }
 
