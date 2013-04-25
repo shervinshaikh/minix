@@ -9,12 +9,12 @@ int main(){
 	int pid = fork();
 	int i;
 	if(pid == 0){
-		for(i=0; i<10000; i++){
+		for(i=0; i<100000; i++){
 			printf("CHILD: %d\n", i);
 		}
 	}
 	else if(pid > 0){
-		for(i=0; i<10000; i++){
+		for(i=0; i<100000; i++){
 			printf("PARENT: %d\n", i);
 		}
 	}

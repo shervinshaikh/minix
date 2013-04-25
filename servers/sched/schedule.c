@@ -302,6 +302,9 @@ int do_nice(message *m_ptr)
 
 	/* Update the proc entry and reschedule the process */
 	//rmp->max_priority = rmp->priority = new_q;
+	rmp->priority = USER_Q;
+	int new_Tickets = random() % 100 + 1;
+	rmp->num_tickets = set_priority(new_Tickets);
 
 	if ((rv = schedule_process_local(rmp)) != OK) {
 		/* Something went wrong when rescheduling the process, roll
@@ -387,14 +390,16 @@ static void balance_queues(struct timer *tp)
 }
 
 
+
+
 int do_lottery()
 {
+	int proc_nr, old_priority, rv, lucky, flag2, flag = -1, num_tickets = 0;
 	struct schedproc *rmp;
-	int proc_nr, rv, lucky, old_priority, flag = -1, num_tickets = 0, flag2;
 
-	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
-		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
-			if (USER_Q == rmp->priority) {
+	for(proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++){
+		if((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)){
+			if(USER_Q == rmp->priority){
 				num_tickets += rmp->num_tickets;
 			}
 		}
@@ -402,21 +407,30 @@ int do_lottery()
 
 	lucky = num_tickets ? random() % num_tickets : 0;
 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
-		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
+		if((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
 				USER_Q == rmp->priority) {
 			old_priority = rmp->priority;
-			if (lucky >= 0) {
+			if(lucky >= 0){
 				lucky -= rmp->num_tickets;
-				if (lucky < 0) {
+				if(lucky < 0){
 					rmp->priority = MAX_USER_Q;
 					flag = OK;
 				}
 			}
-			if (old_priority != rmp->priority) {
+			if(old_priority != rmp->priority){
 				schedule_process(rmp, flag2);
 			}
 		}
 	}
 	return num_tickets ? flag : OK;
+}
+
+int set_priority(int ntickets){
+	int new_Tickets;
+
+	new_Tickets = new_Tickets > 100 ? 100 - new_Tickets : new_Tickets;
+	new_Tickets = new_Tickets < 1 ? 1 - new_Tickets: new_Tickets;
+
+	return new_Tickets;
 }
 
