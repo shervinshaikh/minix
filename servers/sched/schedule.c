@@ -130,6 +130,7 @@ int do_stop_scheduling(message *m_ptr)
 {
 	register struct schedproc *rmp;
 	int proc_nr_n;
+	int rv;
 
 	/* check who can send you requests */
 	if (!accept_message(m_ptr))
@@ -147,7 +148,8 @@ int do_stop_scheduling(message *m_ptr)
 #endif
 	rmp->flags = 0; /*&= ~IN_USE;*/
 
-	if( (rv = do_lottery()) != OK ) return rv; 
+	rv = do_lottery();
+	if( rv != OK ) return rv; 
 
 	return OK;
 }
@@ -368,11 +370,11 @@ void init_scheduling(void)
 	set_timer(&sched_timer, balance_timeout, balance_queues, 0);
 
 	// initialize time stamp counter
-	u64_t r;
+	//u64_t r;
 	// get the current time stamp
-	read_tsc_64(&r);
+	//read_tsc_64(&r);
 	// utilize it to get a random number
-	srandom((unsigned)r.lo);
+	//srandom((unsigned)r.lo);
 }
 
 /*===========================================================================*
@@ -409,22 +411,18 @@ static void balance_queues(struct timer *tp)
  int do_lottery()
  {
  	struct schedproc *rmp;
- 	int proc_nr;
- 	int rv;
- 	int lucky;
- 	int old_priority;
- 	int flag = -1;
- 	int nTickets = 0;
+ 	int proc_nr, rv, lucky, old_priority, flag = -1, num_tickets = 0;
+ 	unsigned flag2;
  
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
  			if (USER_Q == rmp->priority) {
- 				nTickets += rmp->num_tickets;
+ 				num_tickets += rmp->num_tickets;
  			}
  		}
  	}
  
- 	lucky = nTickets ? random() % nTickets : 0;
+ 	lucky = num_tickets ? random() % num_tickets : 0;
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
  				USER_Q == rmp->priority) {
@@ -443,13 +441,13 @@ static void balance_queues(struct timer *tp)
  				}
  			}
  			if (old_priority != rmp->priority) {
- 				schedule_process(rmp);
+ 				schedule_process(rmp, flag2);
  			}
  		}
  	}
  	//
  	printf("------------- do_lottery OK? %d lucky=%d\n", flag, lucky);
  	//
- 	return nTickets ? flag : OK;
+ 	return num_tickets ? flag : OK;
  }
 
