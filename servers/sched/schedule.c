@@ -404,10 +404,6 @@ static void balance_queues(struct timer *tp)
 }
 
 
-
- /*==========================================================================*
-  *				do_lottery				     *
-  *===========================================================================*/
  int do_lottery()
  {
  	struct schedproc *rmp;
@@ -430,13 +426,13 @@ static void balance_queues(struct timer *tp)
  			if (lucky >= 0) {
  				lucky -= rmp->num_tickets;
  				//
- 				   printf("-------------- lucky - %d = %d\n", rmp->num_tickets, lucky);
+ 				   //printf("-------------- lucky - %d = %d\n", rmp->num_tickets, lucky);
  				//
  				if (lucky < 0) {
  					rmp->priority = MAX_USER_Q;
  					flag = OK;
  					//
- 					printf("--------------- endpoint %d\n", rmp->endpoint);
+ 					//printf("--------------- endpoint %d\n", rmp->endpoint);
  					//
  				}
  			}
@@ -446,7 +442,7 @@ static void balance_queues(struct timer *tp)
  		}
  	}
  	//
- 	printf("------------- do_lottery OK? %d lucky=%d\n", flag, lucky);
+ 	//printf("------------- do_lottery OK? %d lucky=%d\n", flag, lucky);
  	//
  	return num_tickets ? flag : OK;
  }
