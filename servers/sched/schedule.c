@@ -303,8 +303,10 @@ int do_nice(message *m_ptr)
 	/* Update the proc entry and reschedule the process */
 	//rmp->max_priority = rmp->priority = new_q;
 	rmp->priority = USER_Q;
+	printf("-----OLD ticket value %d", rmp->num_tickets);
 	int new_Tickets = random() % 100 + 1;
 	rmp->num_tickets = set_priority(new_Tickets);
+	printf("-----NEW ticket value %d", rmp->num_tickets);
 
 	if ((rv = schedule_process_local(rmp)) != OK) {
 		/* Something went wrong when rescheduling the process, roll
