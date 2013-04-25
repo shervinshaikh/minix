@@ -398,7 +398,7 @@ static void balance_queues(struct timer *tp)
 
 int do_lottery()
 {
-	int proc_nr, old_priority, rv, lucky, flag2, flag = -1, num_tickets = 0;
+	int proc_nr, old_priority, rv, lucky, flag = -1, num_tickets = 0;
 	struct schedproc *rmp;
 
 	for(proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++){
@@ -409,7 +409,7 @@ int do_lottery()
 		}
 	}
 
-	printf("Total number of tickets before choosing lucky: %d", num_tickets);
+	printf("Total number of tickets before choosing lucky: %d\n", num_tickets);
 	lucky = num_tickets ? random() % num_tickets : 0;
 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
 		if((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
@@ -423,7 +423,7 @@ int do_lottery()
 				}
 			}
 			if(old_priority != rmp->priority){
-				schedule_process(rmp, flag2);
+				schedule_process(rmp, flag);
 			}
 		}
 	}
