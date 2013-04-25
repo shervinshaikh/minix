@@ -13,6 +13,7 @@
 #include <minix/com.h>
 #include <machine/archtypes.h>
 #include "kernel/proc.h" /* for queue constants */
+#include <minix/syslib.h>
 
 static timer_t sched_timer;
 static unsigned balance_timeout;
@@ -45,6 +46,9 @@ static void balance_queues(struct timer *tp);
 
 /* processes created by RS are sysytem processes */
 #define is_system_proc(p)	((p)->parent == RS_PROC_NR)
+
+#define PROCESS_IN_USER_Q(x) ((x)->priority >= MAX_USER_Q && \
+	(x)->priority <= MIN_USER_Q)
 
 static unsigned cpu_proc[CONFIG_MAX_CPUS];
 
@@ -99,13 +103,23 @@ int do_noquantum(message *m_ptr)
 	}
 
 	rmp = &schedproc[proc_nr_n];
-	if (rmp->priority < MIN_USER_Q) {
-		rmp->priority += 1; /* lower priority */
+	// if (rmp->priority < MIN_USER_Q) {
+	// 	rmp->priority += 1; /* lower priority */
+	// }
+	if(PROCESS_IN_USER_Q(rmp)){
+		rmp->priority = USER_Q;
 	}
+	else if(rmp->priority < MAX_USER_Q - 1){
+		rmp->priority += 1;
+	}
+	printf("------------- do_noquantum, %d in %d\n", rmp->endpoint, rmp->priority);
 
 	if ((rv = schedule_process_local(rmp)) != OK) {
 		return rv;
 	}
+
+	if( (rv=do_lottery()) != OK )  return rv;
+
 	return OK;
 }
 
@@ -132,6 +146,8 @@ int do_stop_scheduling(message *m_ptr)
 	cpu_proc[rmp->cpu]--;
 #endif
 	rmp->flags = 0; /*&= ~IN_USE;*/
+
+	if( (rv = do_lottery()) != OK ) return rv; 
 
 	return OK;
 }
@@ -163,6 +179,8 @@ int do_start_scheduling(message *m_ptr)
 	rmp->endpoint     = m_ptr->SCHEDULING_ENDPOINT;
 	rmp->parent       = m_ptr->SCHEDULING_PARENT;
 	rmp->max_priority = (unsigned) m_ptr->SCHEDULING_MAXPRIO;
+	rmp->ticketN = 5;
+
 	if (rmp->max_priority >= NR_SCHED_QUEUES) {
 		return EINVAL;
 	}
@@ -206,7 +224,8 @@ int do_start_scheduling(message *m_ptr)
 				&parent_nr_n)) != OK)
 			return rv;
 
-		rmp->priority = schedproc[parent_nr_n].priority;
+		//rmp->priority = schedproc[parent_nr_n].priority;
+		rmp->priority = USER_Q;
 		rmp->time_slice = schedproc[parent_nr_n].time_slice;
 		break;
 		
@@ -259,6 +278,8 @@ int do_nice(message *m_ptr)
 	int rv;
 	int proc_nr_n;
 	unsigned new_q, old_q, old_max_q;
+	int old_ticketN;
+	// ???????
 
 	/* check who can send you requests */
 	if (!accept_message(m_ptr))
@@ -279,18 +300,26 @@ int do_nice(message *m_ptr)
 	/* Store old values, in case we need to roll back the changes */
 	old_q     = rmp->priority;
 	old_max_q = rmp->max_priority;
+	// ??????
+	old_ticketN = rmp->ticketN;
 
 	/* Update the proc entry and reschedule the process */
-	rmp->max_priority = rmp->priority = new_q;
+	//rmp->max_priority = rmp->priority = new_q;
+	rmp->priority = USER_Q;
+	// ???????????
 
 	if ((rv = schedule_process_local(rmp)) != OK) {
 		/* Something went wrong when rescheduling the process, roll
 		 * back the changes to proc struct */
 		rmp->priority     = old_q;
 		rmp->max_priority = old_max_q;
+		rmp->ticketN = old_ticketN;
 	}
 
-	return rv;
+	printf("---------------- result of do_nice %d\n", rmp->ticketN);
+
+	//return rv;
+	return do_lottery();
 }
 
 /*===========================================================================*
@@ -337,6 +366,13 @@ void init_scheduling(void)
 	balance_timeout = BALANCE_TIMEOUT * sys_hz();
 	init_timer(&sched_timer);
 	set_timer(&sched_timer, balance_timeout, balance_queues, 0);
+
+	// initialize time stamp counter
+	u64_t r;
+	// get the current time stamp
+	read_tsc_64(&r);
+	// utilize it to get a random number
+	srandom((unsigned)r.lo);
 }
 
 /*===========================================================================*
@@ -355,7 +391,7 @@ static void balance_queues(struct timer *tp)
 
 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
 		if (rmp->flags & IN_USE) {
-			if (rmp->priority > rmp->max_priority) {
+			if (rmp->priority > rmp->max_priority && !PROCESS_IN_USER_Q(rmp)) {
 				rmp->priority -= 1; /* increase priority */
 				schedule_process_local(rmp);
 			}
@@ -364,3 +400,69 @@ static void balance_queues(struct timer *tp)
 
 	set_timer(&sched_timer, balance_timeout, balance_queues, 0);
 }
+
+
+
+ /*==========================================================================*
+  *				do_lottery				     *
+  *===========================================================================*/
+ int do_lottery()
+ {
+ 	struct schedproc *rmp;
+ 	int proc_nr;
+ 	int rv;
+ 	int lucky;
+ 	int old_priority;
+ 	int flag = -1;
+ 	int nTickets = 0;
+ 
+ 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
+ 		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
+ 			if (USER_Q == rmp->priority) {
+ 				nTickets += rmp->ticketN;
+ 			}
+ 		}
+ 	}
+ 
+ 	lucky = nTickets ? rand() % nTickets : 0;
+ 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
+ 		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
+ 				USER_Q == rmp->priority) {
+ 			old_priority = rmp->priority;
+ 			if (lucky >= 0) {
+ 				lucky -= rmp->ticketN;
+ 				//
+ 				   printf("-------------- lucky - %d = %d\n", rmp->ticketN, lucky);
+ 				//
+ 				if (lucky < 0) {
+ 					rmp->priority = MAX_USER_Q;
+ 					flag = OK;
+ 					//
+ 					printf("--------------- endpoint %d\n", rmp->endpoint);
+ 					//
+ 				}
+ 			}
+ 			if (old_priority != rmp->priority) {
+ 				schedule_process(rmp);
+ 			}
+ 		}
+ 	}
+ 	//
+ 	printf("------------- do_lottery OK? %d lucky=%d\n", flag, lucky);
+ 	//
+ 	return nTickets ? flag : OK;
+ }
+ 
+ /*===========================================================================*
+  *				set_priority				     *
+  *===========================================================================*/
+ int set_priority(int ntickets, struct schedproc* p)
+ {
+ 	int add;
+ 
+ 	add = p->ticketN + ntickets > 100 ? 100 - p->ticketN : ntickets;
+ 	add = p->ticketN + ntickets < 1 ? 1 - p->ticketN: add;
+ 	p->ticketN += add;
+ 	return add;
+ }
+
