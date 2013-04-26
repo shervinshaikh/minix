@@ -182,10 +182,10 @@ int do_start_scheduling(message *m_ptr)
 	rmp->max_priority = (unsigned) m_ptr->SCHEDULING_MAXPRIO;
 	rmp->num_tickets = 5;
 
-	printf("-----OLD ticket value %d  ---   ", rmp->num_tickets);
-	rmp->num_tickets = random() % 100 + 1;
-	//rmp->num_tickets = set_priority(new_Tickets);
-	printf("-----NEW ticket value %d \n", rmp->num_tickets);
+	// printf("-----OLD ticket value %d  ---   ", rmp->num_tickets);
+	// rmp->num_tickets = random() % 100 + 1;
+	// //rmp->num_tickets = set_priority(new_Tickets);
+	// printf("-----NEW ticket value %d \n", rmp->num_tickets);
 
 	if (rmp->max_priority >= NR_SCHED_QUEUES) {
 		return EINVAL;
@@ -308,6 +308,10 @@ int do_nice(message *m_ptr)
 	/* Update the proc entry and reschedule the process */
 	//rmp->max_priority = rmp->priority = new_q;
 	rmp->priority = USER_Q;
+
+	printf("-----OLD ticket value %d  ---   ", rmp->num_tickets);
+	rmp->num_tickets = random() % 100 + 1;
+	printf("-----NEW ticket value %d \n", rmp->num_tickets);
 	
 
 	if ((rv = schedule_process_local(rmp)) != OK) {
