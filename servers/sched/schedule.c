@@ -411,7 +411,7 @@ int do_lottery()
 
 	printf("Total number of tickets before choosing lucky: %d\n", num_tickets);
 	lucky = num_tickets ? random() % num_tickets : 0;
-	printf("Lucky: %d\n", lucky)
+	printf("Lucky: %d\n", lucky);
 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
 		if((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
 				USER_Q == rmp->priority) {
