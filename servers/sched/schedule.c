@@ -424,7 +424,7 @@ int do_lottery()
 				}
 			}
 			if(old_priority != rmp->priority){
-				schedule_process(rmp, flag);
+				schedule_process_local(rmp);
 			}
 		}
 	}
