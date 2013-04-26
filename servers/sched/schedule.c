@@ -309,9 +309,9 @@ int do_nice(message *m_ptr)
 	//rmp->max_priority = rmp->priority = new_q;
 	rmp->priority = USER_Q;
 
-	printf("-----OLD ticket value %d  ---   ", rmp->num_tickets);
+	//printf("-----OLD ticket value %d  ---   ", rmp->num_tickets);
 	rmp->num_tickets = random() % 100 + 1;
-	printf("-----NEW ticket value %d \n", rmp->num_tickets);
+	//printf("-----NEW ticket value %d \n", rmp->num_tickets);
 	
 
 	if ((rv = schedule_process_local(rmp)) != OK) {
@@ -402,7 +402,7 @@ static void balance_queues(struct timer *tp)
 
 int do_lottery()
 {
-	int proc_nr, old_priority, rv, lucky, flag = -1, num_tickets = 0;
+	int proc_nr, old_priority, rv, luckyNumber, flag = -1, num_tickets = 0;
 	struct schedproc *rmp;
 
 	for(proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++){
@@ -413,16 +413,16 @@ int do_lottery()
 		}
 	}
 
-	printf("Total number of tickets before choosing lucky: %d\n", num_tickets);
-	lucky = num_tickets ? random() % num_tickets : 0;
-	printf("Lucky: %d\n", lucky);
+	//printf("Total number of tickets before choosing luckyNumber: %d\n", num_tickets);
+	luckyNumber = num_tickets ? random() % num_tickets : 0;
+	//printf("luckyNumber: %d\n", luckyNumber);
 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
 		if((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
 				USER_Q == rmp->priority) {
 			old_priority = rmp->priority;
-			if(lucky >= 0){
-				lucky -= rmp->num_tickets;
-				if(lucky < 0){
+			if(luckyNumber >= 0){
+				luckyNumber -= rmp->num_tickets;
+				if(luckyNumber < 0){
 					rmp->priority = MAX_USER_Q;
 					flag = OK;
 				}
