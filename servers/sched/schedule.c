@@ -285,6 +285,8 @@ int do_nice(message *m_ptr)
 	int proc_nr_n;
 	unsigned new_q, old_q, old_max_q;
 
+	printf("---------------inside do_nice function right meow");
+
 	/* check who can send you requests */
 	if (!accept_message(m_ptr))
 		return EPERM;
@@ -297,9 +299,9 @@ int do_nice(message *m_ptr)
 
 	rmp = &schedproc[proc_nr_n];
 	new_q = (unsigned) m_ptr->SCHEDULING_MAXPRIO;
-	// if (new_q >= NR_SCHED_QUEUES) {
-	// 	return EINVAL;
-	// }
+	if (new_q >= NR_SCHED_QUEUES) {
+		return EINVAL;
+	}
 
 	/* Store old values, in case we need to roll back the changes */
 	old_q     = rmp->priority;
