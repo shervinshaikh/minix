@@ -13,31 +13,6 @@ diff -ruNp minix_src_clean/include/minix/config.h proj1/include/minix/config.h
  #define USER_Q  	  ((MIN_USER_Q - MAX_USER_Q) / 2 + MAX_USER_Q) /* default
  						(should correspond to nice 0) */
  #define MIN_USER_Q	  (NR_SCHED_QUEUES - 1)	/* minimum priority for user
-diff -ruNp minix_src_clean/servers/sched/sched.h proj1/servers/sched/sched.h
---- minix_src_clean/servers/sched/sched.h	2013-02-15 03:18:14.000000000 -0800
-+++ proj1/servers/sched/sched.h	1969-12-31 16:00:00.000000000 -0800
-@@ -1,21 +0,0 @@
--/* This is the master header for the Scheduler.  It includes some other files
-- * and defines the principal constants.
-- */
--#define _POSIX_SOURCE      1	/* tell headers to include POSIX stuff */
--#define _MINIX             1	/* tell headers to include MINIX stuff */
--#define _SYSTEM            1	/* tell headers that this is the kernel */
--
--/* The following are so basic, all the *.c files get them automatically. */
--#include <minix/config.h>	/* MUST be first */
--#include <sys/types.h>
--#include <minix/const.h>
--
--#include <minix/syslib.h>
--#include <minix/sysutil.h>
--#include <minix/timers.h>
--
--#include <errno.h>
--
--#include "proto.h"
--
--extern struct machine machine;		/* machine info */
 diff -ruNp minix_src_clean/servers/sched/schedproc.h proj1/servers/sched/schedproc.h
 --- minix_src_clean/servers/sched/schedproc.h	2013-02-15 03:18:14.000000000 -0800
 +++ proj1/servers/sched/schedproc.h	2013-04-25 23:07:10.000000000 -0700
