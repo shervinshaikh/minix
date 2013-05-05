@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 
-void semaphore()
+int semaphore()
 {
   message m;
   _syscall(PM_PROC_NR, SEMAPHORE, &m);
