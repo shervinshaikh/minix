@@ -1,7 +1,6 @@
 #include <lib.h>
 #include <unistd.h>
 
-
 int semaphore()
 {
   message m;
