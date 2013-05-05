@@ -32,7 +32,7 @@ int do_waitpid(void);
 int wait_test(struct mproc *rmp, struct mproc *child);
 
 /* semaphore.c */
-int do_semaphore(void);
+
 
 /* getset.c */
 int do_get(void);
@@ -59,6 +59,7 @@ int do_getepinfo(void);
 int do_getepinfo_o(void);
 int do_svrctl(void);
 int do_getsetpriority(void);
+int do_semaphore(void);
 
 /* schedule.c */
 void sched_init(void);
