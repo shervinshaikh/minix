@@ -495,11 +495,3 @@ char *brk_addr;
 	_brksize = brk_addr;
 	return 0;
 }
-
-
-int p = 0;
-int do_semaphore() {
-  printf("p: %d\n", p++);
-  printf("Adios motherfucker\n");
-  return 0;
-}
