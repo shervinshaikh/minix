@@ -8,7 +8,14 @@
 #include <minix/type.h>
 #include <minix/vm.h>
 #include <minix/crtso.h>
+#include <signal.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <sys/resource.h>
+#include <sys/utsname.h>
+#include <string.h>
+#include <machine/archtypes.h>
+#include <env.h>
 #include <stdio.h>
 
 /*===========================================================================*
