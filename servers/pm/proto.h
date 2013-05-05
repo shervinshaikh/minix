@@ -31,6 +31,9 @@ void exit_restart(struct mproc *rmp, int dump_core);
 int do_waitpid(void);
 int wait_test(struct mproc *rmp, struct mproc *child);
 
+/* semaphore.c */
+int do_semaphore(void);
+
 /* getset.c */
 int do_get(void);
 int do_set(void);
