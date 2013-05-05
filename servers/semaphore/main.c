@@ -24,6 +24,6 @@
 int p = 0;
 int do_semaphore() {
   printf("p: %d\n", p++);
-  printf("Adios motherfucker\n");
+  printf("2.0 Adios motherfucker 2.0\n");
   return 0;
 }

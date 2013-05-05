@@ -4,5 +4,5 @@
 int semaphore()
 {
   message m;
-  _syscall(PM_PROC_NR, SEMAPHORE, &m);
+  _syscall(SEMA_PROC_NR, SEMAPHORE, &m);
 }

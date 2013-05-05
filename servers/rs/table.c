@@ -16,6 +16,7 @@ struct boot_image_priv boot_image_priv_table[] = {
 /*endpoint,     label,   flags, */
 {RS_PROC_NR,   "rs",     RSYS_F },
 {VM_PROC_NR,   "vm",     VM_F   },
+{SEMA_PROC_NR,   "semaphore",     SRV_F   },
 {PM_PROC_NR,   "pm",     SRV_F  },
 {SCHED_PROC_NR,"sched",  SRV_F  },
 {VFS_PROC_NR,  "vfs",    SRV_F  },
@@ -34,6 +35,7 @@ struct boot_image_sys boot_image_sys_table[] = {
   /*endpoint,         flags                             */
   { RS_PROC_NR,       SRVR_SF                           },
   { VM_PROC_NR,       VM_SF                             },
+  { SEMA_PROC_NR,       SRV_SF                             },
   { PM_PROC_NR,       SRVR_SF                           },
   { VFS_PROC_NR,      SRVR_SF                           },
   { LOG_PROC_NR,      SRV_SF                            },
