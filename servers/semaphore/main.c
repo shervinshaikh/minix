@@ -1,5 +1,14 @@
+#include <minix/keymap.h>
 #include <minix/callnr.h>
+#include <minix/com.h>
+#include <minix/ds.h>
+#include <minix/type.h>
+#include <minix/endpoint.h>
+#include <minix/minlib.h>
+#include <minix/type.h>
+#include <minix/vm.h>
 #include <minix/crtso.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 /*===========================================================================*
