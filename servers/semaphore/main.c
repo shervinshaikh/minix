@@ -1,4 +1,5 @@
 #include <minix/callnr.h>
+#include <minix/crtso.h>
 #include <stdio.h>
 
 /*===========================================================================*
