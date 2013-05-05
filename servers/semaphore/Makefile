@@ -4,13 +4,11 @@
 PROG=	semaphore
 SRCS=	main.c
 
-DPADD+=	${LIBSYS} ${LIBTIMERS}
-LDADD+=	-lsys -ltimers
+DPADD+=	${LIBSYS}
+LDADD+=	-lsys
 
 MAN=
 
 BINDIR?= /usr/sbin
-
-CPPFLAGS.main.c+=	-I${NETBSDSRCDIR}
 
 .include <minix.bootprog.mk>
