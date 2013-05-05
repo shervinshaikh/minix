@@ -17,10 +17,6 @@
 #include <machine/archtypes.h>
 #include <env.h>
 
-#include "kernel/const.h"
-#include "kernel/config.h"
-#include "kernel/proc.h"
-
 /*===========================================================================*
  *				do_semaphore				             *
  *===========================================================================*/
