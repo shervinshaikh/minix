@@ -1,5 +1,3 @@
-.include <bsd.own.mk>
-
 # Makefile for Semaphore
 PROG=	semaphore
 SRCS=	main.c
