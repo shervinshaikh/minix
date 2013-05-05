@@ -497,8 +497,9 @@ char *brk_addr;
 }
 
 
-
+int p=0;
 int do_semaphore() {
-  printf("Adios motherfucker\n");
+printf("p: %d\n", p++);
+printf("Adios motherfucker\n");
   return 0;
 }
