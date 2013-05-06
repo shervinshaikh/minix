@@ -19,12 +19,12 @@
 #include <stdio.h>
 
 
-int main(int argc, char **argv){
-	sef_startup();
+// int main(int argc, char **argv){
+// 	sef_startup();
 
-	do_semaphore();
-	return 0;
-}
+// 	do_semaphore();
+// 	return 0;
+// }
 
 
 /*===========================================================================*
