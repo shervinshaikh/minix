@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
 	int call_type, ipc_status;
 
 	/* SEF local startup. */
-	sef_local_startup();
+	sef_startup();
 
 	/* initialization */
 	sem.counter = 1;
