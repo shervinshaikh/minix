@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 	// if (sem.counter == 0)
 	// 	sem.counter = 1;
 	sem.list_nr = 0;
-	srandom
+	srandom(time(NULL));
 
 	/* This is SEMAPHORE's main loop-  get work and do it, forever and forever. */
 	while (TRUE) {
