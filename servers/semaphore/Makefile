@@ -1,6 +1,6 @@
 # Makefile for Semaphore
 PROG=	semaphore
-SRCS=	main.c
+SRCS=	semaphore.c
 
 DPADD+=	${LIBSYS}
 LDADD+=	-lsys
