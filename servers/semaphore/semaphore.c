@@ -33,6 +33,25 @@
 #define _SYSTEM	1
 #define _MINIX 1
 
+#include <minix/keymap.h>
+// #include <minix/callnr.h>
+// #include <minix/com.h>
+#include <minix/ds.h>
+//#include <minix/type.h>
+// #include <minix/endpoint.h>
+#include <minix/minlib.h>
+// #include <minix/type.h>
+#include <minix/vm.h>
+#include <minix/crtso.h>
+#include <signal.h>
+// #include <stdlib.h>
+#include <fcntl.h>
+#include <sys/resource.h>
+#include <sys/utsname.h>
+#include <string.h>
+#include <machine/archtypes.h>
+#include <env.h>
+
 #include <minix/callnr.h>
 #include <minix/com.h>
 #include <minix/config.h>
@@ -83,7 +102,7 @@ int main(int argc, char *argv[])
 	// if (sem.counter == 0)
 	// 	sem.counter = 1;
 	sem.list_nr = 0;
-	srand(time(NULL));
+	srandom
 
 	/* This is SEMAPHORE's main loop-  get work and do it, forever and forever. */
 	while (TRUE) {
@@ -122,7 +141,7 @@ int main(int argc, char *argv[])
 					continue;
 				} else {
 					/* the lucky one is based on "luck" ... */
-					int p = rand() % sem.list_nr;
+					int p = random() % sem.list_nr;
 					who_e = sem.list[p];
 
 					--sem.list_nr;
