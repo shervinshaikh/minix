@@ -31,7 +31,7 @@
  *				do_semaphore				             *
  *===========================================================================*/
 int p = 0;
-int do_semaphore() {
+int main() {
   printf("p: %d\n", p++);
   printf("2.0 Adios motherfucker 2.0\n");
   return 0;
