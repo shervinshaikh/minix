@@ -67,6 +67,8 @@
 
 int main(void)
 {
+
+	printf("Semaphore service is now running..........\n");
 	message m;
 	endpoint_t who_e;
 	int call_type, ipc_status;
@@ -86,8 +88,18 @@ int main(void)
 
 		printf("Call Type: %d", call_type);
 		printf("Who sent it: %d\n", who_e);
+
+		r = (*call_vec[call_type])();
 	}
 
 	/* impossible to get here */
-	return -1;
+
+
+
+	return 0;
+}
+
+
+void do_semaphore(void){
+	printf("--------------- Inside do_semaphore function\n");
 }
