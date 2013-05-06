@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-/* semaphore down is synchronous */
+// down = synchronous
 void sem_down(endpoint_t e)
 {
 	message m;
@@ -24,7 +24,7 @@ void sem_down(endpoint_t e)
 		printf("semaphore down error\n");
 }
 
-/* semaphore up does not need to be synchronous */
+// up not synchronous
 void sem_up(endpoint_t e)
 {
 	message m;
