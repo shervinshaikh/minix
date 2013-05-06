@@ -70,11 +70,11 @@ int main(int argc, char *argv[])
 
 	/* initialization */
 	sem.counter = 1;
-	if (argc == 2)
-		sem.counter = atoi(argv[1]);
+	// if (argc == 2)
+	// 	sem.counter = atoi(argv[1]);
 	/* ensure that the counter is at least one */
-	if (sem.counter == 0)
-		sem.counter = 1;
+	// if (sem.counter == 0)
+	// 	sem.counter = 1;
 	sem.list_nr = 0;
 	srand(time(NULL));
 
