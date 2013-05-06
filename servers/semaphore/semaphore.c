@@ -61,7 +61,7 @@
 // #include <stdlib.h>
 // #include <errno.h>
 
-
+#include "semaphore.h"
 #include <minix/keymap.h>
 #include <minix/callnr.h>
 #include <minix/com.h>
@@ -80,7 +80,6 @@
 #include <string.h>
 #include <machine/archtypes.h>
 #include <env.h>
-
 
 
 #include "kernel/const.h"
