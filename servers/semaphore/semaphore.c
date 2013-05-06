@@ -33,12 +33,47 @@
 #define _SYSTEM	1
 #define _MINIX 1
 
+// #include <minix/keymap.h>
+// #include <minix/ds.h>
+// #include <minix/minlib.h>
+// #include <minix/vm.h>
+// #include <minix/crtso.h>
+// #include <signal.h>
+// #include <fcntl.h>
+// #include <sys/resource.h>
+// #include <sys/utsname.h>
+// #include <string.h>
+// #include <machine/archtypes.h>
+// #include <env.h>
+
+// #include <minix/callnr.h>
+// #include <minix/com.h>
+// #include <minix/config.h>
+// #include <minix/ipc.h>
+// #include <minix/endpoint.h>
+// #include <minix/sysutil.h>
+// #include <minix/const.h>
+// #include <minix/type.h>
+
+// #include <sys/types.h>
+// #include <time.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <errno.h>
+
+
 #include <minix/keymap.h>
+#include <minix/callnr.h>
+#include <minix/com.h>
 #include <minix/ds.h>
+#include <minix/type.h>
+#include <minix/endpoint.h>
 #include <minix/minlib.h>
+#include <minix/type.h>
 #include <minix/vm.h>
 #include <minix/crtso.h>
 #include <signal.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <sys/resource.h>
 #include <sys/utsname.h>
@@ -46,20 +81,11 @@
 #include <machine/archtypes.h>
 #include <env.h>
 
-#include <minix/callnr.h>
-#include <minix/com.h>
-#include <minix/config.h>
-#include <minix/ipc.h>
-#include <minix/endpoint.h>
-#include <minix/sysutil.h>
-#include <minix/const.h>
-#include <minix/type.h>
 
-#include <sys/types.h>
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
+
+#include "kernel/const.h"
+#include "kernel/config.h"
+#include "kernel/proc.h"
 
 /*===========================================================================*
  *				main                                         *
