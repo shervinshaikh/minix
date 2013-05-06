@@ -62,11 +62,18 @@ struct semaphore {
 
 struct semaphore sem;
 
+/*===========================================================================*
+ *				main                                         *
+ *===========================================================================*/
+
 int main(int argc, char *argv[])
 {
 	message m;
 	endpoint_t who_e;
-	int call_type;
+	int call_type, ipc_status;
+
+	/* SEF local startup. */
+	sef_local_startup();
 
 	/* initialization */
 	sem.counter = 1;
@@ -78,12 +85,12 @@ int main(int argc, char *argv[])
 	sem.list_nr = 0;
 	srand(time(NULL));
 
-	/* main loop */
+	/* This is SEMAPHORE's main loop-  get work and do it, forever and forever. */
 	while (TRUE) {
 		int r;
 
 		/* wait for request message */
-		if ((r = receive(ANY, &m)) != OK)
+		if ((r = sef_receive_status(ANY, &m, ipc_status)) != OK)
 			printf("SEM receive error %d\n", r);
 		who_e = m.m_source;
 		call_type = m.m_type;
