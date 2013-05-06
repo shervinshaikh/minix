@@ -5,7 +5,7 @@
 
 .if ${MKIMAGEONLY} == "yes"
 
-SUBDIR=	ds init mfs pfs pm rs sched vfs vm
+SUBDIR=	ds init mfs pfs pm rs sched vfs vm semaphore
 
 .else
 
