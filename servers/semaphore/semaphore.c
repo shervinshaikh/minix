@@ -82,9 +82,9 @@
 #include <env.h>
 
 
-#include "kernel/const.h"
-#include "kernel/config.h"
-#include "kernel/proc.h"
+#include "/usr/src/kernel/const.h"
+#include "/usr/src/kernel/config.h"
+#include "/usr/src/kernel/proc.h"
 
 /*===========================================================================*
  *				main                                         *
