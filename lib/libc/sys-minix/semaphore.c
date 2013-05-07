@@ -5,7 +5,9 @@ int semaphore()
 {
   message m;
   m.m_type = SEM_INIT;
+  printf("About to do semaphore _syscall\n");
   _syscall(SEMA_PROC_NR, SEM_INIT, &m);
+  printf("complete semaphore _syscall\n");
 }
 
 

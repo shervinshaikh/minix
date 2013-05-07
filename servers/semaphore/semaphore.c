@@ -49,7 +49,7 @@ int main(void)
 		who_e = m.m_source;
 		call_nr = m.m_type;
 
-		printf("Call Number: %d", call_nr);
+		printf("Call Number: %d\n", call_nr);
 		printf("Who sent it: %d\n", who_e);
 
 		// Or do a switch statement and call the functions below??
