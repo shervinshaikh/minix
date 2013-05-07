@@ -1,11 +1,14 @@
 #include <lib.h>
 #include <unistd.h>
+#include <minix/callnr.h>
+#include <minix/ipc.h>
+#include <minix/com.h>
 
 int semaphore()
 {
   message m;
   m.m_type = SEM_INIT;
-  printf("About to do semaphore _syscall\n");
+  printf("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)\n", SEMA_PROC_NR, SEM_INIT, m.m_type);
   _syscall(SEMA_PROC_NR, SEM_INIT, &m);
   printf("complete semaphore _syscall\n");
 }
