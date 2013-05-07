@@ -1,9 +1,11 @@
+.include <bsd.own.mk>
+
 # Makefile for Semaphore
 PROG=	semaphore
 SRCS=	semaphore.c
 
-DPADD+=	${LIBSYS}
-LDADD+=	-lsys
+DPADD+=	${LIBSYS} ${LIBTIMERS}
+LDADD+=	-lsys -ltimers
 
 MAN=
 
