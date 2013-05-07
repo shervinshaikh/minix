@@ -19,9 +19,9 @@
 #include <env.h>
 
 
-#include "kernel/const.h"
-#include "kernel/config.h"
-#include "kernel/proc.h"
+// #include <kernel/const.h>
+// #include <kernel/config.h>
+// #include <kernel/proc.h>
 
 /*===========================================================================*
  *				main                                         *
@@ -33,7 +33,7 @@ int main(void)
 	printf("Semaphore service is now running..........\n");
 	// because its defined in glo.h
 	message m;
-	endpoint_t who_e;
+	endpoint_t who_e, call_nr;
 	int result;
 
 	/* SEF local startup. */
