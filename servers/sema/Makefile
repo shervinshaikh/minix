@@ -1,4 +1,4 @@
-PROG=	semaphore
+PROG=	sema
 SRCS=	semaphore.c
 
 DPADD+=	${LIBSYS} ${LIBTIMERS}
