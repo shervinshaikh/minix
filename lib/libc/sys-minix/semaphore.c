@@ -4,8 +4,48 @@
 int semaphore()
 {
   message m;
-  _syscall(SEMA_PROC_NR, SEMAPHORE, &m);
+  m.m_type = SEM_INIT;
+  _syscall(SEMA_PROC_NR, SEM_INIT, &m);
 }
+
+
+// int sem_init(int start_value){
+// 	printf("--------------- calling Semaphore INIT\n");
+
+// 	message m;
+// 	m.m1_i1 = start_value;
+// 	_syscall(SEMA_PROC_NR, SEM_INIT, &m);
+// }
+
+// int sem_down(int semaphore_number){
+// 	printf("--------------- calling Semaphore DOWN\n");
+
+// 	message m;
+// 	m.m1_i2 = semaphore_number;
+// 	_syscall(SEMA_PROC_NR, SEM_DOWN, &m);
+// 	return OK;
+// }
+
+// int sem_up(int semaphore_number){
+// 	printf("--------------- calling Semaphore UP\n");
+
+// 	message m;
+// 	m.m1_i2 = semaphore_number;
+// 	_syscall(SEMA_PROC_NR, SEM_UP, &m);
+// 	return OK;
+// }
+
+// int sem_release(int semaphore){
+// 	printf("--------------- calling Semaphore RELEASED\n");
+
+// 	message m;
+// 	m.m1_i3 = semaphore;
+// 	_syscall(SEMA_PROC_NR, SEM_RELEASE, &m);
+
+// 	return OK;
+// }
+
+
 
 // sem_init sem_up
 

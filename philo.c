@@ -19,6 +19,8 @@ void sem_down(endpoint_t e)
 	int r;
 
 	m.m_type = SEM_DOWN;
+
+	// sendrec(SEMA_PROC_NR, &m)
 	r = sendrec(e, &m);
 	if (r)
 		printf("semaphore down error\n");

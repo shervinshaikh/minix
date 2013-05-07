@@ -14,9 +14,9 @@
 // extern struct utsname uts_val;	/* uname info */
 
 /* The parameters of the call are kept here. */
-EXTERN message m;		/* the incoming message itself is kept here. */
-EXTERN int who_p, who_e;	/* caller's proc number, endpoint */
-EXTERN int call_nr;		/* system call number */
+// EXTERN message m;		/* the incoming message itself is kept here. */
+// EXTERN int who_p, who_e;	/* caller's proc number, endpoint */
+// EXTERN int call_nr;		/* system call number */
 
 extern int(*call_vec[]) (void);
 // EXTERN sigset_t core_sset;	/* which signals cause core images */

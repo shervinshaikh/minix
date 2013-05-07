@@ -16,8 +16,8 @@
 #include <minix/const.h>
 #include <minix/priv.h>
 // we remove the kernel??
-#include "kernel/const.h"
-#include "kernel/type.h"
+#include "const.h"
+#include "type.h"
 
 struct priv {
   proc_nr_t s_proc_nr;		/* number of associated process */
