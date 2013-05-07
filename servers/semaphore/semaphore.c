@@ -32,8 +32,8 @@ int main(void)
 
 	printf("Semaphore service is now running..........\n");
 	// because its defined in glo.h
-	//message m;
-	//endpoint_t who_e;
+	message m;
+	endpoint_t who_e;
 	int result;
 
 	/* SEF local startup. */
@@ -45,14 +45,15 @@ int main(void)
 
 		/* wait for request message */
 		if ((result = sef_receive_status(ANY, &m, ipc_status)) != OK)
-			printf("SEMAPHORE receive error %d\n", r);
+			printf("SEMAPHORE receive error %d\n", result);
 		who_e = m.m_source;
 		call_nr = m.m_type;
 
 		printf("Call Number: %d", call_nr);
 		printf("Who sent it: %d\n", who_e);
 
-		result = (*call_vec[call_nr])();
+		// Or do a switch statement and call the functions below??
+		//result = (*call_vec[call_nr])();
 	}
 
 	/* impossible to get here */
@@ -62,7 +63,28 @@ int main(void)
 	return 0;
 }
 
+// int do_sem_init(message *m_ptr){
+// 	printf("---------------  INIT\n");
 
-void do_semaphore(void){
-	printf("--------------- Inside do_semaphore function\n");
-}
+// 	return OK;
+// }
+
+// int do_sem_down(message *m_ptr){
+// 	printf("---------------  DOWN\n");
+
+// 	return OK;
+// }
+
+// int do_sem_up(message *m_ptr){
+// 	printf("---------------  UP\n");
+
+// 	return OK;
+// }
+
+// int do_sem_release(message *m_ptr){
+// 	printf("---------------  RELEASED\n");
+
+
+// 	return OK;
+// }
+

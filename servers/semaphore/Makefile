@@ -4,8 +4,8 @@
 PROG=	semaphore
 SRCS=	semaphore.c
 
-DPADD+=	${LIBSYS} ${LIBTIMERS}
-LDADD+=	-lsys -ltimers
+DPADD+=	${LIBSYS}
+LDADD+=	-lsys
 
 MAN=
 
