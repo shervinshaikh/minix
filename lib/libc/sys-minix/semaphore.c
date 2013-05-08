@@ -9,47 +9,47 @@ int semaphore()
   message m;
   m.m_type = SEM_INIT;
   printf("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)\n", SEMA_PROC_NR, SEM_INIT, m.m_type);
-  _syscall(SEMA_PROC_NR, SEM_INIT, &m);
+  _syscall(SEMA_PROC_NR, m_type, &m);
   printf("complete semaphore _syscall\n");
   return 0;
 }
 
 
-// int sem_init(int start_value){
-// 	printf("--------------- calling Semaphore INIT\n");
+int sem_init(int start_value){
+	printf("--------------- calling Semaphore INIT\n");
 
-// 	message m;
-// 	m.m1_i1 = start_value;
-// 	_syscall(SEMA_PROC_NR, SEM_INIT, &m);
-// }
+	message m;
+	m.m1_i1 = start_value;
+	_syscall(SEMA_PROC_NR, SEM_INIT, &m);
+}
 
-// int sem_down(int semaphore_number){
-// 	printf("--------------- calling Semaphore DOWN\n");
+int sem_down(int semaphore_number){
+	printf("--------------- calling Semaphore DOWN\n");
 
-// 	message m;
-// 	m.m1_i2 = semaphore_number;
-// 	_syscall(SEMA_PROC_NR, SEM_DOWN, &m);
-// 	return OK;
-// }
+	message m;
+	m.m1_i2 = semaphore_number;
+	_syscall(SEMA_PROC_NR, SEM_DOWN, &m);
+	return OK;
+}
 
-// int sem_up(int semaphore_number){
-// 	printf("--------------- calling Semaphore UP\n");
+int sem_up(int semaphore_number){
+	printf("--------------- calling Semaphore UP\n");
 
-// 	message m;
-// 	m.m1_i2 = semaphore_number;
-// 	_syscall(SEMA_PROC_NR, SEM_UP, &m);
-// 	return OK;
-// }
+	message m;
+	m.m1_i2 = semaphore_number;
+	_syscall(SEMA_PROC_NR, SEM_UP, &m);
+	return OK;
+}
 
-// int sem_release(int semaphore){
-// 	printf("--------------- calling Semaphore RELEASED\n");
+int sem_release(int semaphore){
+	printf("--------------- calling Semaphore RELEASED\n");
 
-// 	message m;
-// 	m.m1_i3 = semaphore;
-// 	_syscall(SEMA_PROC_NR, SEM_RELEASE, &m);
+	message m;
+	m.m1_i3 = semaphore;
+	_syscall(SEMA_PROC_NR, SEM_RELEASE, &m);
 
-// 	return OK;
-// }
+	return OK;
+}
 
 
 
