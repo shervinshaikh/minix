@@ -3,6 +3,8 @@
 #include <minix/callnr.h>
 #include <minix/ipc.h>
 #include <minix/com.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define DEBUG
 #ifdef DEBUG
@@ -10,6 +12,8 @@
 #else
     #define    debug(f,...)
 #endif
+
+#define OK 0
 
 // int semaphore()
 // {
