@@ -69,8 +69,11 @@ int main(void)
 			case SEM_RELEASE: result = do_sem_release(&m);
 		}
 
-		setreply(who_e, result);
-		sendreply();
+		// setreply(who_e, result);
+		// sendreply();
+		message m_out;
+		m_out.reply_type = result;
+		sendnb(who_e, &m_out);
 
 		// Or do a switch statement and call the functions below??
 		//result = (*call_vec[call_nr])();

@@ -1129,12 +1129,6 @@
 #	define SEMOP_OPS	m2_l1
 #	define SEMOP_SIZE	m2_i2
 
-/* Shervin & Ramon's Semaphore */
- #define SEM_BASE (IPC_BASE+8)
- #	define SEM_DOWN (SEM_BASE+1)
- #	define SEM_UP	(SEM_BASE+2)
- #	define SEM_DOWN_OK (SEM_BASE+3)
-
 /*===========================================================================*
  *                Messages for Scheduling				     *
  *===========================================================================*/
