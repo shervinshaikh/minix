@@ -17,6 +17,7 @@
 #include <string.h>
 #include <machine/archtypes.h>
 #include <env.h>
+#include <stdio.h>
 
 
 // #include <kernel/const.h>
