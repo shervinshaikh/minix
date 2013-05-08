@@ -32,7 +32,7 @@ int sem_init(int start_value){
 	message m;
 	m.m_type = SEM_INIT;
 	m.m1_i1 = start_value;
-	debug("Start value: %d", m.m1_i1);
+	debug("library, Start value: %d", m.m1_i1);
 	debug("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_INIT, m.m_type);
 	_syscall(SEMA_PROC_NR, SEM_INIT, &m);
 	return 1; // next available semaphore value
@@ -44,7 +44,7 @@ int sem_down(int semaphore_number){
 	message m;
 	m.m_type = SEM_DOWN;
 	m.m1_i2 = semaphore_number;
-	debug("Semaphore number: %d", m.m1_i2);
+	debug("library, Semaphore number: %d", m.m1_i2);
 	debug("_syscall(SEMA_PROC_NR:%d, SEM_DOWN:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_DOWN, m.m_type);
 	_syscall(SEMA_PROC_NR, SEM_DOWN, &m);
 	return OK;
@@ -56,7 +56,7 @@ int sem_up(int semaphore_number){
 	message m;
 	m.m_type = SEM_UP;
 	m.m1_i2 = semaphore_number;
-	debug("Semaphore number: %d", m.m1_i2);
+	debug("library, Semaphore number: %d", m.m1_i2);
 	debug("_syscall(SEMA_PROC_NR:%d, SEM_UP:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_UP, m.m_type);
 	_syscall(SEMA_PROC_NR, SEM_UP, &m);
 	return OK;
@@ -68,7 +68,7 @@ int sem_release(int semaphore){
 	message m;
 	m.m_type = SEM_RELEASE;
 	m.m1_i3 = semaphore;
-	debug("Semaphore: %d", m.m1_i3);
+	debug("library, Semaphore: %d", m.m1_i3);
 	debug("_syscall(SEMA_PROC_NR:%d, SEM_RELEASE:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_RELEASE, m.m_type);
 	_syscall(SEMA_PROC_NR, SEM_RELEASE, &m);
 	return OK;
