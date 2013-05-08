@@ -44,6 +44,8 @@ int main(void)
 	while (TRUE) {
 		int ipc_status;
 
+		printf("IN THE WHILE STATE FOR SEMA");
+
 		/* wait for request message */
 		//if ((result = sef_receive_status(ANY, &m, &ipc_status)) != OK)
 		if ((result = receive(ANY, &m, &ipc_status)) != OK)
