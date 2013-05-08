@@ -72,7 +72,7 @@ int main(void)
 		// setreply(who_e, result);
 		// sendreply();
 		message m_out;
-		m_out.reply_type = result;
+		m_out.m1_i4 = result;
 		sendnb(who_e, &m_out);
 
 		// Or do a switch statement and call the functions below??
