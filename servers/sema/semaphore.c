@@ -64,10 +64,10 @@ int main(void)
 
 		
 		switch(call_nr){
-			case SEM_INIT: result = do_sem_init(&m);
-			case SEM_DOWN: result = do_sem_down(&m);
-			case SEM_UP: result = do_sem_up(&m);
-			case SEM_RELEASE: result = do_sem_release(&m);
+			case SEM_INIT: result = do_sem_init(&m); break;
+			case SEM_DOWN: result = do_sem_down(&m); break;
+			case SEM_UP: result = do_sem_up(&m); break;
+			case SEM_RELEASE: result = do_sem_release(&m); break;
 		}
 
 		// setreply(who_e, result);
