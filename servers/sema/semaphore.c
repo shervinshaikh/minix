@@ -21,7 +21,7 @@
 
 #define DEBUG
 #ifdef DEBUG
-    #define    debug(f,...)    fprintf(stderr,f "",##__VA_ARGS__)
+    #define    debug(f,...)    fprintf(stderr,f "\n",##__VA_ARGS__)
 #else
     #define    debug(f,...)
 #endif

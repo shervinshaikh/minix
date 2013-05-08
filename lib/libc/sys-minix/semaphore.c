@@ -8,7 +8,7 @@
 
 #define DEBUG
 #ifdef DEBUG
-    #define    debug(f,...)    fprintf(stderr,f "",##__VA_ARGS__)
+    #define    debug(f,...)    fprintf(stderr,f "\n",##__VA_ARGS__)
 #else
     #define    debug(f,...)
 #endif
@@ -34,7 +34,7 @@ int sem_init(int start_value){
 	m.m1_i1 = start_value;
 	debug("Start value: %d", m.m1_i1);
 	debug("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_INIT, m.m_type);
-	_syscall(SEMA_PROC_NR, SEM_INIT, &m));
+	_syscall(SEMA_PROC_NR, SEM_INIT, &m);
 	return 1; // next available semaphore value
 }
 
