@@ -45,7 +45,8 @@ int main(void)
 		int ipc_status;
 
 		/* wait for request message */
-		if ((result = sef_receive_status(ANY, &m, &ipc_status)) != OK)
+		//if ((result = sef_receive_status(ANY, &m, &ipc_status)) != OK)
+		if ((result = receive(ANY, &m, &ipc_status)) != OK)
 			printf("SEMAPHORE receive error %d\n", result);
 		
 		printf("SEMAPHORE recieved a message\n");
