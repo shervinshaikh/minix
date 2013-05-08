@@ -147,7 +147,11 @@ int	 unlink(const char *);
 ssize_t	 write(int, const void *, size_t);
 
 /* DEFINING SEMAPHORE */
-int semaphore(void);
+// int semaphore(void);
+int sem_init(int start_value);
+int sem_down(int semaphore_number);
+int sem_up(int semaphore_number);
+int sem_release(int semaphore);
 
 /*
  * IEEE Std 1003.2-92, adopted in X/Open Portability Guide Issue 4 and later

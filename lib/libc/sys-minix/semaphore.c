@@ -4,50 +4,69 @@
 #include <minix/ipc.h>
 #include <minix/com.h>
 
-int semaphore()
-{
-  message m;
-  m.m_type = SEM_INIT;
-  printf("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)\n", SEMA_PROC_NR, SEM_INIT, m.m_type);
-  _syscall(SEMA_PROC_NR, m_type, &m);
-  printf("complete semaphore _syscall\n");
-  return 0;
-}
+#define DEBUG
+#ifdef DEBUG
+    #define    debug(f,...)    fprintf(stderr,f "",##__VA_ARGS__)
+#else
+    #define    debug(f,...)
+#endif
+
+// int semaphore()
+// {
+//   message m;
+//   m.m_type = SEM_INIT;
+//   debug("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_INIT, m.m_type);
+//   _syscall(SEMA_PROC_NR, m_type, &m);
+//   debug("complete semaphore _syscall");
+//   return 0;
+// }
 
 
 int sem_init(int start_value){
-	printf("--------------- calling Semaphore INIT\n");
+	debug("--------------- calling Semaphore INIT");
 
 	message m;
+	m.m_type = SEM_INIT;
 	m.m1_i1 = start_value;
-	_syscall(SEMA_PROC_NR, SEM_INIT, &m);
+	debug("Start value: %d", m.m1_i1);
+	debug("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_INIT, m.m_type);
+	_syscall(SEMA_PROC_NR, SEM_INIT, &m));
+	return 1; // next available semaphore value
 }
 
 int sem_down(int semaphore_number){
-	printf("--------------- calling Semaphore DOWN\n");
+	debug("--------------- calling Semaphore DOWN");
 
 	message m;
+	m.m_type = SEM_DOWN;
 	m.m1_i2 = semaphore_number;
+	debug("Semaphore number: %d", m.m1_i2);
+	debug("_syscall(SEMA_PROC_NR:%d, SEM_DOWN:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_DOWN, m.m_type);
 	_syscall(SEMA_PROC_NR, SEM_DOWN, &m);
 	return OK;
 }
 
 int sem_up(int semaphore_number){
-	printf("--------------- calling Semaphore UP\n");
+	debug("--------------- calling Semaphore UP");
 
 	message m;
+	m.m_type = SEM_UP;
 	m.m1_i2 = semaphore_number;
+	debug("Semaphore number: %d", m.m1_i2);
+	debug("_syscall(SEMA_PROC_NR:%d, SEM_UP:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_UP, m.m_type);
 	_syscall(SEMA_PROC_NR, SEM_UP, &m);
 	return OK;
 }
 
 int sem_release(int semaphore){
-	printf("--------------- calling Semaphore RELEASED\n");
+	debug("--------------- calling Semaphore RELEASED");
 
 	message m;
+	m.m_type = SEM_RELEASE;
 	m.m1_i3 = semaphore;
+	debug("Semaphore: %d", m.m1_i3);
+	debug("_syscall(SEMA_PROC_NR:%d, SEM_RELEASE:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_RELEASE, m.m_type);
 	_syscall(SEMA_PROC_NR, SEM_RELEASE, &m);
-
 	return OK;
 }
 

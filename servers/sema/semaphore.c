@@ -19,10 +19,12 @@
 #include <env.h>
 #include <stdio.h>
 
-
-// #include <kernel/const.h>
-// #include <kernel/config.h>
-// #include <kernel/proc.h>
+#define DEBUG
+#ifdef DEBUG
+    #define    debug(f,...)    fprintf(stderr,f "",##__VA_ARGS__)
+#else
+    #define    debug(f,...)
+#endif
 
 /*===========================================================================*
  *				main                                         *
@@ -31,7 +33,7 @@
 int main(void)
 {
 
-	printf("Semaphore service is now running..........\n");
+	debug("Semaphore service is now running..........");
 	// because its defined in glo.h
 	message m;
 	endpoint_t who_e, call_nr;
@@ -44,22 +46,31 @@ int main(void)
 	while (TRUE) {
 		int ipc_status;
 
-		printf("IN THE WHILE STATE FOR SEMA");
+		debug("IN THE WHILE STATE FOR SEMA");
 
 		/* wait for request message */
 		//if ((result = sef_receive_status(ANY, &m, &ipc_status)) != OK)
 		if ((result = receive(ANY, &m, &ipc_status)) != OK)
-			printf("SEMAPHORE receive error %d\n", result);
+			debug("SEMAPHORE receive error %d", result);
 		
-		printf("SEMAPHORE recieved a message\n");
+		debug("SEMAPHORE recieved a message");
 
 		who_e = m.m_source;
 		call_nr = m.m_type;
 
-		printf("Call Number: %d\n", call_nr);
-		printf("Who sent it: %d\n", who_e);
+		debug("Call Number: %d", call_nr);
+		debug("Who: %d", who_e);
 
-		do_sem_init(&m);
+		
+		switch(call_nr){
+			case SEM_INIT: result = do_sem_init(&m);
+			case SEM_DOWN: result = do_sem_down(&m);
+			case SEM_UP: result = do_sem_up(&m);
+			case SEM_RELEASE: result = do_sem_release(&m);
+		}
+
+		setreply(who_e, result);
+		sendreply();
 
 		// Or do a switch statement and call the functions below??
 		//result = (*call_vec[call_nr])();
@@ -73,27 +84,27 @@ int main(void)
 }
 
 int do_sem_init(message *m_ptr){
-	printf("---------------  INIT\n");
+	debug("---------------  INIT");
 
 	return OK;
 }
 
-// int do_sem_down(message *m_ptr){
-// 	printf("---------------  DOWN\n");
+int do_sem_down(message *m_ptr){
+	debug("---------------  DOWN");
 
-// 	return OK;
-// }
+	return OK;
+}
 
-// int do_sem_up(message *m_ptr){
-// 	printf("---------------  UP\n");
+int do_sem_up(message *m_ptr){
+	debug("---------------  UP");
 
-// 	return OK;
-// }
+	return OK;
+}
 
-// int do_sem_release(message *m_ptr){
-// 	printf("---------------  RELEASED\n");
+int do_sem_release(message *m_ptr){
+	debug("---------------  RELEASED");
 
 
-// 	return OK;
-// }
+	return OK;
+}
 
