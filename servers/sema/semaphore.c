@@ -89,26 +89,25 @@ int main(void)
 
 int do_sem_init(message *m_ptr){
 	debug("---------------  INIT");
-
+	debug("Start value: %d", m.m1_i1);
 	return OK;
 }
 
 int do_sem_down(message *m_ptr){
 	debug("---------------  DOWN");
-
+	debug("Semaphore number: %d", m.m1_i2);
 	return OK;
 }
 
 int do_sem_up(message *m_ptr){
 	debug("---------------  UP");
-
+	debug("Semaphore number: %d", m.m1_i2);
 	return OK;
 }
 
 int do_sem_release(message *m_ptr){
 	debug("---------------  RELEASED");
-
-
+	debug("Semaphore: %d", m.m1_i3);
 	return OK;
 }
 
