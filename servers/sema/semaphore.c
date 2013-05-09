@@ -27,10 +27,11 @@
     #define    debug(f,...)
 #endif
 
+int s = 1;
+
 /*===========================================================================*
  *				main                                         *
  *===========================================================================*/
-
 int main(void)
 {
 
@@ -68,14 +69,14 @@ int main(void)
 			case SEM_DOWN: result = do_sem_down(&m); break;
 			case SEM_UP: result = do_sem_up(&m); break;
 			case SEM_RELEASE: result = do_sem_release(&m); break;
+			default: result = EINVAL;
 		}
 
-		// setreply(who_e, result);
-		// sendreply();
-		message m_out;
-		//m_out.reply_type = result;
-		sendnb(who_e, &m_out);
-
+		if(result != EDONTREPLY){
+			message m_out;
+			m_out.m_type = result;
+			sendnb(who_e, &m_out);
+		}
 		// Or do a switch statement and call the functions below??
 		//result = (*call_vec[call_nr])();
 	}
@@ -96,12 +97,28 @@ int do_sem_init(message *m_ptr){
 int do_sem_down(message *m_ptr){
 	debug("---------------  DOWN");
 	debug("server, Semaphore number: %d", m_ptr->m1_i2);
-	return OK;
+	
+	if(s > 0){ // available semaphore then decresase
+		s--;	
+		return OK;
+	}
+
+	return EDONTREPLY;
 }
 
 int do_sem_up(message *m_ptr){
 	debug("---------------  UP");
 	debug("server, Semaphore number: %d", m_ptr->m1_i2);
+	message m;
+	s++; // add resource to that specific semaphore number
+
+	if(){ // if processes blocked on semaphore then remove process
+		s--;
+		m.m_type = OK;
+		m.m_source = s; // remove process from queue
+		sendnb(m_ptr->m_source, &m);
+	}
+
 	return OK;
 }
 
