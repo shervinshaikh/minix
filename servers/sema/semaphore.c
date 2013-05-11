@@ -27,7 +27,8 @@
     #define    debug(f,...)
 #endif
 
-int s = 1;
+int s = 1, nextValue = 0;
+int *semaphore;
 
 /*===========================================================================*
  *				main                                         *
@@ -43,6 +44,12 @@ int main(void)
 
 	/* SEF local startup. */
 	sef_startup();
+
+	int k;
+	semaphore = (int*) calloc(10, sizeof(int));
+	for(k=0; k<10; k++){
+		semaphore[k] = -2;
+	}
 
 	/* This is SEMAPHORE's main loop-  get work and do it, forever and forever. */
 	while (TRUE) {
@@ -77,7 +84,6 @@ int main(void)
 			m_out.m_type = result;
 			sendnb(who_e, &m_out);
 		}
-		// Or do a switch statement and call the functions below??
 		//result = (*call_vec[call_nr])();
 	}
 
@@ -91,6 +97,12 @@ int main(void)
 int do_sem_init(message *m_ptr){
 	debug("---------------  INIT");
 	debug("server, Start value: %d", m_ptr->m1_i1);
+	if(semaphore == NULL){
+		return ENOMEM;
+	}
+	semaphore[nextValue] = m_ptr->m1_i1;
+
+
 	return OK;
 }
 
@@ -112,7 +124,7 @@ int do_sem_up(message *m_ptr){
 	message m;
 	s++; // add resource to that specific semaphore number
 
-	if(){ // if processes blocked on semaphore then remove process
+	if(0){ // if processes blocked on semaphore then remove process
 		s--;
 		m.m_type = OK;
 		m.m_source = s; // remove process from queue

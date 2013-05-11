@@ -15,17 +15,6 @@
 
 #define OK 0
 
-// int semaphore()
-// {
-//   message m;
-//   m.m_type = SEM_INIT;
-//   debug("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_INIT, m.m_type);
-//   _syscall(SEMA_PROC_NR, m_type, &m);
-//   debug("complete semaphore _syscall");
-//   return 0;
-// }
-
-
 int sem_init(int start_value){
 	debug("--------------- calling Semaphore INIT");
 
@@ -73,21 +62,3 @@ int sem_release(int semaphore){
 	_syscall(SEMA_PROC_NR, SEM_RELEASE, &m);
 	return OK;
 }
-
-
-
-// sem_init sem_up
-
-
-// int mycall(a, b, c)
-// int a, b, c;
-// {
-	// message m;
-	//  You may pass a buffer pointer here if necessary,
-	// using m.m1_p1 instead. You can learn from
-	// /usr/src/lib/posix/_write.c 
-	// m.m1_i1 = a;
-	// m.m1_i2 = b;
-	// m.m1_i3 = c;
-	// return(_syscall(FS, MYCALL, &m)); 
-// }
