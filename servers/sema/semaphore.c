@@ -95,32 +95,44 @@ int main(void)
 }
 
 int do_sem_init(message *m_ptr){
+	int start_value = m_ptr->m1_i1;
 	debug("---------------  INIT");
-	debug("server, Start value: %d", m_ptr->m1_i1);
+	debug("server, Start value: %d", start_value);
+
 	if(semaphore == NULL){
 		return ENOMEM;
 	}
 	semaphore[nextValue] = m_ptr->m1_i1;
 
-
-	return OK;
+	return ++nextValue;
 }
 
 int do_sem_down(message *m_ptr){
+	int semNumber = m_ptr->m1_i2;
 	debug("---------------  DOWN");
-	debug("server, Semaphore number: %d", m_ptr->m1_i2);
-	
-	if(s > 0){ // available semaphore then decresase
-		s--;	
+	debug("server, Semaphore number: %d", semNumber);
+	if(semaphore[semNumber] == -2){
+		return EINVAL;
+	}
+	if(semaphore[semNumber] > 0){ // available semaphore then decresase
+		semNumber[semNumber]--;	
 		return OK;
 	}
 
+	// add it to the queue and return not reply 
+	
 	return EDONTREPLY;
 }
 
 int do_sem_up(message *m_ptr){
+	int semNumber = m_ptr->m1_i2;
 	debug("---------------  UP");
-	debug("server, Semaphore number: %d", m_ptr->m1_i2);
+	debug("server, Semaphore number: %d", semNumber);
+
+	if(semaphore[semNumber] == -2){
+		return EINVAL;
+	}
+
 	message m;
 	s++; // add resource to that specific semaphore number
 
@@ -135,6 +147,7 @@ int do_sem_up(message *m_ptr){
 }
 
 int do_sem_release(message *m_ptr){
+	int semap
 	debug("---------------  RELEASED");
 	debug("server, Semaphore: %d", m_ptr->m1_i3);
 	return OK;

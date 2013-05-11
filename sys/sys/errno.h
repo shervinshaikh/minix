@@ -71,6 +71,7 @@
 #define ENOTEMPTY     (_SIGN 39 )  /* directory not empty */
 #define ELOOP         (_SIGN 40 )  /* too many levels of symlinks detected */
 #define ERESTART      (_SIGN 41 )  /* service restarted */
+#define EINUSE		(_SIGN 42)	/* unable to release semaphore */
 #define EIDRM         (_SIGN 43 )  /* Identifier removed */
 #define EILSEQ        (_SIGN 44 )  /* illegal byte sequence */
 #define	ENOMSG	      (_SIGN 45 )  /* No message of desired type */
