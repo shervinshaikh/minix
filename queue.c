@@ -3,60 +3,71 @@
 #include <string.h>
 #include "queue.h"
 
-
 struct Node
 {
 	int process;
 	struct Node* next;
 };
 
-int size = 0;
-struct Node *rear = NULL, *front = NULL;
+struct Queue
+{
+	int size;
+	struct Node *rear, *front;
+};
 
-int dequeue(){
-	struct Node *temp = front;
+struct Queue* init_queue(){
+	struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue*));
+	q->rear = NULL;
+	q->front = NULL;
+	q->size = 0;
+	return q;
+}
+
+int dequeue(struct Queue* q){
+	struct Node *temp = q->front;
 	if(temp == NULL){
 		// queue empty, should never reach here
 		return -1;
 	}
-	front = front->next;
+	q->front = q->front->next;
 	temp->next = NULL;
-	size--;
+	q->size--;
 	return temp->process;
 }
 
-void enqueue(int process){
+void enqueue(struct Queue* q, int process){
 	struct Node *var = (struct Node*)malloc(sizeof(struct Node));
 	var->process = process;
-	if(front == NULL){
-		front = var;
-		front->next = NULL;
-		rear = front;
+	if(q->front == NULL){
+		q->front = var;
+		q->front->next = NULL;
+		q->rear = q->front;
 	}
 	else{
-		rear->next = var;
-		rear = var;
+		q->rear->next = var;
+		q->rear = var;
 		//front->next = NULL;
 	}
-	size++;
-	printf("%d was added to the queue and the new size: %d\n", rear->process, size);
+	q->size++;
+	printf("%d was added to the queue and the new size: %d\n", q->rear->process, q->size);
 }
 
 
-int queue_size(){
-	return size;
+int queue_size(struct Queue* q){
+	return q->size;
 }
 
-// int main(){
-// 	printf("about to add to queue\n");
-// 	enqueue(1);
-// 	enqueue(2);
-// 	enqueue(3);
-// 	printf("%d was removed from the queue\n", dequeue());
-// 	printf("Current queue size: %d\n", queue_size());
-// 	printf("%d was removed from the queue\n", dequeue());
-// 	enqueue(4);
-// 	printf("%d was removed from the queue\n", dequeue());
-// 	printf("%d was removed from the queue\n", dequeue());
-// 	return 0;
-// }
+int main(){
+	printf("about to add to queue\n");
+	struct Queue *q = init_queue();
+	enqueue(q, 1);
+	enqueue(q, 2);
+	enqueue(q, 3);
+	printf("%d was removed from the queue\n", dequeue(q));
+	printf("Current queue size: %d\n", queue_size(q));
+	printf("%d was removed from the queue\n", dequeue(q));
+	enqueue(q, 4);
+	printf("%d was removed from the queue\n", dequeue(q));
+	printf("%d was removed from the queue\n", dequeue(q));
+	return 0;
+}
