@@ -130,7 +130,7 @@ int do_sem_init(message *m_ptr){
 	semaphores[nextValue]->value = start_value;
 	semaphores[nextValue]->isValid = 1;
 
-	debug("SEM_INIT, sem number: %d, start value: %d", nextValue, start_value);
+	debug("SEM_INIT, sem number: %d, start value: %d", nextValue, semaphores[nextValue]->value);
 	nextValue++;
 	return lastValue++;
 }
@@ -145,6 +145,7 @@ int do_sem_down(message *m_ptr){
 	}
 	else if(semaphores[semNumber]->value > 0){ // available semaphore then decresase
 		semaphores[semNumber]->value--;
+		debug("SEM_DOWN old: %d, new: %d", semaphores[semNumber]->value+1, semaphores[semNumber]->value);
 		return OK;
 	}
 	debug("about to add pid: %d to the queue", source);
