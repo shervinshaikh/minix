@@ -2,9 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 
-int semEating = sem_init(1); //1 means no one is eating, free.
-int semUGrad  = sem_init(2); //2 total undergrads
-int semGrad   = sem_init(2); //6 total grad students
+void UGrad(int num);
+void UGrad2(int num);
+void Grad(int num);
+void Grad2(int num);
+void UGradEat(int num);
+void GradEat(int num);
+
+int semEating;
+int semUGrad;
+int semGrad;
 
 //int pizzaArray[8]={1,2,3,4,5,6,7,8};
 int numStudents = 8;
@@ -18,6 +25,10 @@ int prev_student=0;
 int main(void){
   //1-6 6 grads
   //7-8 2 ugrads
+
+  semEating = sem_init(1); //1 means no one is eating, free.
+  semUGrad  = sem_init(2); //2 total undergrads
+  semGrad   = sem_init(2); //2 total undergrads
 
   int i;
 
@@ -55,7 +66,7 @@ void UGrad(int num){
     sem_down(semUGrad);
     prev_student = num;
     UGradEat(num);
-    //prev_student = num;
+    prev_student = num;
     sem_up(semEating);
     sem_up(semUGrad);
   }
