@@ -38,12 +38,16 @@ int dequeue(struct Queue* q){
 void enqueue(struct Queue* q, int process){
 	struct Node *var = (struct Node*)malloc(sizeof(struct Node));
 	var->process = process;
+	printf("null = %p\n", NULL);
+	printf("about to check front of que, %p\n", q->front);
 	if(q->front == NULL){
+		printf("inside if statement");
 		q->front = var;
 		q->front->next = NULL;
 		q->rear = q->front;
 	}
 	else{
+		printf("inside else statement");
 		q->rear->next = var;
 		q->rear = var;
 		//front->next = NULL;
