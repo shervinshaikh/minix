@@ -77,20 +77,20 @@ int main(void)
 	while (TRUE) {
 		int ipc_status;
 
-		debug("IN THE WHILE STATE FOR SEMA");
+		//debug("IN THE WHILE STATE FOR SEMA");
 
 		/* wait for request message */
 		//if ((result = sef_receive_status(ANY, &m, &ipc_status)) != OK)
 		if ((result = receive(ANY, &m, &ipc_status)) != OK)
 			debug("SEMAPHORE receive error %d", result);
 		
-		debug("SEMAPHORE recieved a message");
+		//debug("SEMAPHORE recieved a message");
 
 		who_e = m.m_source;
 		call_nr = m.m_type;
 
-		debug("Call Number: %d", call_nr);
-		debug("Who: %d", who_e);
+		// debug("Call Number: %d", call_nr);
+		// debug("Who: %d", who_e);
 
 		
 		switch(call_nr){
@@ -118,8 +118,8 @@ int main(void)
 
 int do_sem_init(message *m_ptr){
 	int start_value = m_ptr->m1_i1;
-	debug("---------------  INIT");
-	debug("server, Start value: %d", start_value);
+	//debug("---------------  INIT");
+	//debug("server, Start value: %d", start_value);
 
 	if(start_value <= 0){
 		return EPERM;
@@ -130,14 +130,16 @@ int do_sem_init(message *m_ptr){
 	semaphores[nextValue]->value = start_value;
 	semaphores[nextValue]->isValid = 1;
 
+	debug("SEM_INIT, sem number: %d, start value: %d", nextValue, start_value);
 	nextValue++;
 	return lastValue++;
 }
 
 int do_sem_down(message *m_ptr){
 	int semNumber = m_ptr->m1_i2;
-	debug("---------------  DOWN");
-	debug("server, Semaphore number: %d", semNumber);
+	int source = m_ptr->m_source;
+	//debug("---------------  DOWN");
+	//debug("server, Semaphore number: %d", semNumber);
 	if(semaphores[semNumber]->isValid == 0){
 		return EINVAL;
 	}
@@ -145,6 +147,8 @@ int do_sem_down(message *m_ptr){
 		semaphores[semNumber]->value--;
 		return OK;
 	}
+	debug("about to add pid: %d to the queue", source);
+	debug("address of q->front: %p", semaphores[semNumber]->q->front); 
 	// add it to the queue and return not reply 
 	enqueue(semaphores[semNumber]->q, source);
 	return EDONTREPLY;
@@ -152,8 +156,8 @@ int do_sem_down(message *m_ptr){
 
 int do_sem_up(message *m_ptr){
 	int semNumber = m_ptr->m1_i2;
-	debug("---------------  UP");
-	debug("server, Semaphore number: %d", semNumber);
+	//debug("---------------  UP");
+	//debug("server, Semaphore number: %d", semNumber);
 	if(semaphores[semNumber]->isValid == 0){
 		return EINVAL;
 	}
@@ -216,16 +220,16 @@ int dequeue(struct Queue* q){
 void enqueue(struct Queue* q, int process){
 	struct Node *var = (struct Node*)malloc(sizeof(struct Node));
 	var->process = process;
-	printf("null = %p\n", NULL);
-	printf("about to check front of que, %p\n", q->front);
+	//printf("null = %p\n", NULL);
+	//printf("about to check front of que, %p\n", q->front);
 	if(q->front == NULL){
-		printf("inside if statement");
+		//printf("inside if statement");
 		q->front = var;
 		q->front->next = NULL;
 		q->rear = q->front;
 	}
 	else{
-		printf("inside else statement");
+		//printf("inside else statement");
 		q->rear->next = var;
 		q->rear = var;
 		//front->next = NULL;

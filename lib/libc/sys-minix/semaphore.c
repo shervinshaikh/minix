@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
     #define    debug(f,...)    fprintf(stderr,f "\n",##__VA_ARGS__)
 #else
