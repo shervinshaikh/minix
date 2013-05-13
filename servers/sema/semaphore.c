@@ -19,7 +19,6 @@
 #include <env.h>
 #include <stdio.h>
 #include <minix/ipc.h>
-#include "queue.h"
 
 #define DEBUG
 #ifdef DEBUG
