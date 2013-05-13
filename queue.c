@@ -16,10 +16,11 @@ struct Queue
 };
 
 struct Queue* init_queue(){
-	struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue*));
+	struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue));
 	q->rear = NULL;
 	q->front = NULL;
 	q->size = 0;
+	debug("initalized a que, q->front address: %p", q->front);
 	return q;
 }
 

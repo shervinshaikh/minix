@@ -55,20 +55,34 @@ int main(void)
 	// initalize 20 empty semaphores
 	int k;
 	for(k=0; k<10; k++){
-		semaphores[k] = (struct Semaphore*) malloc(sizeof(struct Semaphore*));
+		semaphores[k] = (struct Semaphore*) malloc(sizeof(struct Semaphore));
 		semaphores[k]->q = init_queue();
 		semaphores[k]->isValid = 0;
 	}
 
 	// hard code some tests to see if semaphore services works
+	debug("about to init sem, front address: %p", semaphores[0]->q->front);
+
+	debug("nextValue: %d", nextValue);
+	debug("....about to sem 1 init, front address: %p", semaphores[0]->q);
 	int semNumber = do_sem_init(3);
-	debug("size of queue of first semaphore: %d", queue_size(semaphores[0]->q));
+	debug("nextValue: %d", nextValue);
+
+	debug("....sem 1 init, front address: %p", semaphores[0]->q);
+	debug("....about to init sem 2, front address: %p", semaphores[1]->q);
+	//debug("size of queue of first semaphore: %d", queue_size(semaphores[0]->q));
 	int semNumber2 = do_sem_init(2);
+	debug("....sem 2, front address: %p", semaphores[1]->q);
+	debug("nextValue: %d", nextValue);
+
+	debug("sem 2 init, 1 front address: %p", semaphores[0]->q->front);
 	do_sem_down(semNumber, 111);
 	do_sem_down(semNumber, 222);
 	do_sem_down(semNumber, 333);
+	do_sem_up(semNumber);
 	do_sem_down(semNumber, 444);
-	//do_sem_up(semNumber);
+	// int semNumber2 = do_sem_init(2);
+	do_sem_up(semNumber);
 
 
 	return 0;
@@ -81,9 +95,12 @@ int do_sem_init(int start_value){
 	if(semaphores == NULL){ // out of memory failure
 		return ENOMEM;
 	}
+	debug("nextValue: %d", nextValue);
+	debug("before setting start value of 2..... 1 front address: %p", semaphores[0]->q->front);
 	semaphores[nextValue]->value = start_value;
+	debug("before setting isValid of 2..... 1 front address: %p", semaphores[0]->q->front);
 	semaphores[nextValue]->isValid = 1;
-
+	debug("after complete init of 2..... 1 front address: %p", semaphores[0]->q->front);
 	debug("SEM_INIT, sem number: %d, start value: %d", nextValue, start_value);
 
 	//if(nextValue == lastValue && arraySize > lastValue){
@@ -117,7 +134,7 @@ int do_sem_down(int semNumber, int source){
 	}
 	// add it to the queue and return not reply 
 	debug("about to add pid: %d to the queue", source);
-	debug("address of q->front: %p", semaphores[semNumber]->q);
+	debug("address of q->front: %p", semaphores[semNumber]->q->front);
 	enqueue(semaphores[semNumber]->q, source);
 	return EDONTREPLY;
 }
@@ -161,11 +178,18 @@ int do_sem_release(int semNumber){
 	return OK;
 }
 
+
+
+
+
+
+
 struct Queue* init_queue(){
-	struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue*));
+	struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue));
 	q->rear = NULL;
 	q->front = NULL;
 	q->size = 0;
+	debug("initalized a que, q->front address: %p", q->front);
 	return q;
 }
 
