@@ -19,6 +19,7 @@
 #include <env.h>
 #include <stdio.h>
 #include <minix/ipc.h>
+#include "queue.h"
 
 #define DEBUG
 #ifdef DEBUG
@@ -28,7 +29,13 @@
 #endif
 
 int s = 1, nextValue = 0;
-int *semaphore;
+
+struct Semaphore
+{
+	// 0 = is NOT initialized, 1 = is initialized
+	int isValid;
+	struct Queue *q;
+}
 
 /*===========================================================================*
  *				main                                         *
@@ -46,9 +53,13 @@ int main(void)
 	sef_startup();
 
 	int k;
-	semaphore = (int*) calloc(10, sizeof(int));
-	for(k=0; k<10; k++){
-		semaphore[k] = -2;
+
+	// initalize semaphores
+	struct Semaphore semaphores[20];
+	for(k=0; k<20; k++){
+		semaphores[k] = (struct Semaphore*) malloc(sizeof(Semaphore));
+		semaphores[k]->q = init_queue();
+		semaphores[k]->isValid = 0;
 	}
 
 	/* This is SEMAPHORE's main loop-  get work and do it, forever and forever. */
@@ -104,7 +115,7 @@ int do_sem_init(message *m_ptr){
 	}
 	semaphore[nextValue] = m_ptr->m1_i1;
 
-	return ++nextValue;
+	return nextValue++;
 }
 
 int do_sem_down(message *m_ptr){
@@ -147,9 +158,13 @@ int do_sem_up(message *m_ptr){
 }
 
 int do_sem_release(message *m_ptr){
-	int semap
+	int semNumber = m_ptr->m1_i3;
 	debug("---------------  RELEASED");
-	debug("server, Semaphore: %d", m_ptr->m1_i3);
+	debug("server, Semaphore: %d", semNumber);
+
+	// set isValid to 0, and NULL all pointers
+
+
 	return OK;
 }
 
