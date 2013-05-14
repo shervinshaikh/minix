@@ -47,7 +47,7 @@ struct Semaphore
 };
 
 int s = 1;
-int nextValue = 0, lastValue = 0, arraySize = 10;
+int nextValue = 0, arraySize = 10;
 struct Semaphore *semaphores[10];
 
 /*===========================================================================*
@@ -131,8 +131,7 @@ int do_sem_init(message *m_ptr){
 	semaphores[nextValue]->isValid = 1;
 
 	debug("SEM_INIT, sem number: %d, start value: %d", nextValue, semaphores[nextValue]->value);
-	nextValue++;
-	return lastValue++;
+	return nextValue++;
 }
 
 int do_sem_down(message *m_ptr){
@@ -186,10 +185,8 @@ int do_sem_release(message *m_ptr){
 	/// set isValid to 0, and NULL all pointers
 	semaphores[semNumber]->isValid = 0;
 	semaphores[semNumber]->value = 0;
-	semaphores[semNumber]->q = NULL;
-
-
-	// change next available semaphore # and hold onto last spot in array
+	//semaphores[semNumber]->q = NULL;
+	clear_queue(semaphores[semNumber]->q);
 
 	return OK;
 }
@@ -243,4 +240,10 @@ void enqueue(struct Queue* q, int process){
 int queue_size(struct Queue* q){
 	debug("size of queue: %d", q->size);
 	return q->size;
+}
+
+void clear_queue(struct Queue *q){
+	q->rear = NULL;
+	q->front = NULL;
+	q->size = 0;
 }

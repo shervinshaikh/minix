@@ -62,6 +62,12 @@ int queue_size(struct Queue* q){
 	return q->size;
 }
 
+void clear_queue(struct Queue *q){
+	q->rear = NULL;
+	q->front = NULL;
+	q->size = 0;
+}
+
 // int main(){
 // 	printf("about to add to queue\n");
 // 	struct Queue *q = init_queue();

@@ -16,3 +16,4 @@ struct Queue* init_queue();
 int dequeue(struct Queue* q);
 void enqueue(struct Queue* q, int process);
 int queue_size(struct Queue* q);
+void clear_queue(struct Queue* q);
