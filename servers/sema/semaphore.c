@@ -47,7 +47,7 @@ struct Semaphore
 };
 
 int s = 1;
-int nextValue = 0, arraySize = 10;
+int nextValue = 0, arraySize = 9;
 struct Semaphore *semaphores[10];
 
 /*===========================================================================*
@@ -110,9 +110,6 @@ int main(void)
 	}
 
 	/* impossible to get here */
-
-
-
 	return 0;
 }
 
@@ -127,10 +124,23 @@ int do_sem_init(message *m_ptr){
 	if(semaphores == NULL){ // out of memory failure
 		return ENOMEM;
 	}
-	semaphores[nextValue]->value = start_value;
-	semaphores[nextValue]->isValid = 1;
+
+	if(arraySize >= nextValue){
+		semaphores[nextValue]->value = start_value;
+		semaphores[nextValue]->isValid = 1;
+	}
+	else{
+		arraySize = arraySize + 10;
+		semaphores = (struct Semaphore*) realloc(semaphores, sizeof(struct Semaphore*) * arraySize);
+		for(k=arraySize-nextValue; k<=arraySize; k++){
+			semaphores[k] = (struct Semaphore*) realloc(semaphores, sizeof(struct Semaphore) * arraySize);
+			semaphores[k]->q = init_queue();
+			semaphores[k]->isValid = 0;
+		}
+	}
 
 	debug("SEM_INIT, sem number: %d, start value: %d", nextValue, semaphores[nextValue]->value);
+	arraySize++;
 	return nextValue++;
 }
 
