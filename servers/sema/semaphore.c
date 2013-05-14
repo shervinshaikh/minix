@@ -131,7 +131,8 @@ int do_sem_init(message *m_ptr){
 	}
 	else{
 		arraySize = arraySize + 10;
-		semaphores = (struct Semaphore*) realloc(semaphores, sizeof(struct Semaphore*) * arraySize);
+		*semaphores = (struct Semaphore*) realloc(semaphores, sizeof(struct Semaphore*) * arraySize);
+		int k;
 		for(k=arraySize-nextValue; k<=arraySize; k++){
 			semaphores[k] = (struct Semaphore*) realloc(semaphores, sizeof(struct Semaphore) * arraySize);
 			semaphores[k]->q = init_queue();
