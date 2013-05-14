@@ -241,5 +241,6 @@ void enqueue(struct Queue* q, int process){
 
 
 int queue_size(struct Queue* q){
+	debug("size of queue: %d", q->size);
 	return q->size;
 }
