@@ -66,8 +66,8 @@ int main(void){
                   debug("ugrad done eating");
           }
       	prev_student=0;
-        debug("about to exit");
     	exit(0);
+        debug("exit(0)");
   }
       else{
       	childPids[i]=p;
