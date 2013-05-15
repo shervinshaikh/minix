@@ -58,22 +58,25 @@ int main(void){
           if(student < 7){
                   debug("Student number: %d\n", student);
         	  Grad(student);
+                  debug("grad done eating");
           }
           else{
                   debug("Student number: %d\n", student);
         	  UGrad(student);
+                  debug("ugrad done eating");
           }
       	prev_student=0;
+        debug("about to exit");
     	exit(0);
   }
       else{
       	childPids[i]=p;
       }
   debug("all students have eaten");
+  }
   sem_release(semEating);
   sem_release(semUGrad);
   sem_release(semGrad);
- } 
 //}
   return 0;
 }
