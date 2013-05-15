@@ -69,9 +69,12 @@ int main(void){
       else{
       	childPids[i]=p;
       }
- debug("all students have eaten");
-   } 
-}
+  debug("all students have eaten");
+  sem_release(semEating);
+  sem_release(semUGrad);
+  sem_release(semGrad);
+ } 
+//}
   return 0;
 }
 
