@@ -47,12 +47,15 @@ int main(void){
       int student = prev_student;
 
       while(prev_student == student){
+        debug("choosing a student at random to get pizza");
        	student = (rand() % (numStudents))+1;
-         
        }
 
-      if( (p=fork()) == 0){ //child process
-        	if(student < 7){
+
+        debug("about to fork");
+        if( (p=fork()) == 0){ //child process
+        	debug("if-else statements for fork begin");
+          if(student < 7){
         	  Grad(student);
           }
         	else{
@@ -64,7 +67,8 @@ int main(void){
       else{
       	childPids[i]=p;
       }
-   }
+      debug("all students have eaten");
+    }
   }
   return 0;
 }
