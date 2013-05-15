@@ -54,7 +54,7 @@ int main(void){
 
 
         debug("about to fork");
- if( (p=fork()) == 0){ //child process
+if( (p=fork()) == 0){ //child process
         	debug("if-else statements for fork begin");
           if(student < 7){
                   debug("Student number: %d\n", student);
@@ -77,9 +77,9 @@ int main(void){
 }
 
 void UGrad(int num){
-  if(prev_student == 7 || prev_student==8){
-    UGrad2(num);
-  }
+// if(prev_student == 7 || prev_student==8){
+//    UGrad2(num);
+//  }
   else{
     sem_down(semUGrad);
     sem_down(semEating); 
@@ -103,9 +103,9 @@ void UGradEat(int num){
 
 void Grad(int num){
 
-   if(prev_student >= 1 && prev_student <= 6){
-    Grad2(num);
-  }
+// if(prev_student >= 1 && prev_student <= 6){
+//    Grad2(num);
+//  }
    else{
      sem_down(semGrad);
      sem_down(semEating); 
