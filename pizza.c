@@ -36,23 +36,26 @@ int main(void){
   while(1){
     for(i=0;i<numStudents;i++){
       int student = prev_student;
-      while(prev_student == student)
-	(rand() % (numStudents))+1;
-      
-      if( (p=fork()) == 0){//child process
-	if(student < 7)
-	  Grad(student);
-	else
-	  UGrad(student);
-	prev_student=0;
-	exit(0);
+
+      while(prev_student == student){
+      	(rand() % (numStudents))+1;
       }
-      else
-	childPids[i]=p;
+
+      if( (p=fork()) == 0){ //child process
+        	if(student < 7){
+        	  Grad(student);
+          }
+        	else{
+        	  UGrad(student);
+          }
+      	prev_student=0;
+      	exit(0);
+      }
+      else{
+      	childPids[i]=p;
+      }
     }
-    
   }
-  
   return 0;
 }
 
