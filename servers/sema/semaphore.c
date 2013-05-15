@@ -124,10 +124,10 @@ int do_sem_init(message *m_ptr){
 	if(semaphores == NULL){ // out of memory failure
 		return ENOMEM;
 	}
-
 	if(arraySize >= nextValue){
 		int found = 0, j=0;
 		while(found == 0 && j<arraySize){
+			debug(".....Sem: %d, isValid: %d", j, semaphores[j]->isValid);
 			if(semaphores[j]->isValid == 0){
 				found = 1;
 			}
@@ -137,6 +137,7 @@ int do_sem_init(message *m_ptr){
 		}
 		semaphores[j]->value = start_value;
 		semaphores[j]->isValid = 1;
+		debug("set sem: %d to %d", j, semaphores[j]->value);
 	}
 	else{
 		arraySize = arraySize + 10;
@@ -199,14 +200,16 @@ int do_sem_up(message *m_ptr){
 
 int do_sem_release(message *m_ptr){
 	int semNumber = m_ptr->m1_i3;
-	debug("---------------  RELEASED");
-	debug("server, Semaphore: %d", semNumber);
+	//debug("---------------  RELEASED");
+	//debug("server, Semaphore: %d", semNumber);
 
 	/// set isValid to 0, and NULL all pointers
 	semaphores[semNumber]->isValid = 0;
 	semaphores[semNumber]->value = 0;
 	//semaphores[semNumber]->q = NULL;
 	clear_queue(semaphores[semNumber]->q);
+
+	debug("Sem: %d, was released. isValid: %d", semNumber, semaphores[semNumber]->isValid)
 
 	return OK;
 }
