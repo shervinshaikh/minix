@@ -80,7 +80,7 @@ void UGrad(int num){
 // if(prev_student == 7 || prev_student==8){
 //    UGrad2(num);
 //  }
-  else{
+//  else{
     sem_down(semUGrad);
     sem_down(semEating); 
     prev_student = num;
@@ -88,7 +88,7 @@ void UGrad(int num){
     prev_student = num;
     sem_up(semEating);
     sem_up(semUGrad);
-  }
+//  }
 }
 
 void UGrad2(int num){
@@ -106,7 +106,7 @@ void Grad(int num){
 // if(prev_student >= 1 && prev_student <= 6){
 //    Grad2(num);
 //  }
-   else{
+//   else{
      sem_down(semGrad);
      sem_down(semEating); 
      prev_student = num;
@@ -114,7 +114,7 @@ void Grad(int num){
      //prev_student = num;
      sem_up(semEating);
      sem_up(semGrad);
-   }
+//   }
   
 }
 
