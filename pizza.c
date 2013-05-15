@@ -40,7 +40,7 @@ int main(void){
   int i;
 
   srand(time(NULL));
-//  while(1){
+// while(1){
     debug("While loop begins..");
     for(i=0;i<numStudents;i++){
       debug("For loop begins..");
@@ -53,7 +53,7 @@ int main(void){
 
 
         debug("about to fork");
-//     if( (p=fork()) == 0){ //child process
+     if( (p=fork()) == 0){ //child process
         	debug("if-else statements for fork begin");
           if(student < 7){
                   debug("Student number: %d\n", student);
@@ -64,14 +64,17 @@ int main(void){
         	  UGrad(student);
           }
       	prev_student=0;
-//    	exit(0);
-//  }
-//      else{
-//      	childPids[i]=p;
-//      }
-// debug("all students have eaten");
-   } 
-//  }
+    	exit(0);
+  }
+      else{
+      	childPids[i]=p;
+      }
+  debug("all students have eaten");
+  sem_release(semEating);
+  sem_release(semUGrad);
+  sem_release(semGrad);
+ } 
+//}
   return 0;
 }
 
