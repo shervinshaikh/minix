@@ -40,7 +40,7 @@ int main(void){
   int i;
 
   srand(time(NULL));
-  while(1){
+//  while(1){
     debug("While loop begins..");
     for(i=0;i<numStudents;i++){
       debug("For loop begins..");
@@ -71,7 +71,7 @@ int main(void){
 //      }
 // debug("all students have eaten");
    } 
-  }
+//  }
   return 0;
 }
 
