@@ -66,7 +66,7 @@ int main(void){
           }
       	prev_student=0;
       	exit(0);
-//    }
+    }
       else{
       	childPids[i]=p;
       }
