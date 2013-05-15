@@ -38,9 +38,10 @@ int main(void){
   semGrad   = sem_init(2); //2 total undergrads
 
   int i;
-
+int j=0;
   srand(time(NULL));
 // while(1){
+for(int j=0;j<=100;j++){
     debug("While loop begins..");
     for(i=0;i<numStudents;i++){
       debug("For loop begins..");
@@ -66,7 +67,7 @@ int main(void){
                   debug("ugrad done eating");
           }
       	prev_student=0;
-    	exit(0);
+//    	exit(0);
         debug("exit(0)");
   }
       else{
@@ -77,7 +78,7 @@ int main(void){
   sem_release(semEating);
   sem_release(semUGrad);
   sem_release(semGrad);
-//}
+}
   return 0;
 }
 

@@ -2,13 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define DEBUG
-#ifdef DEBUG
-    #define    debug(f,...)    fprintf(stderr,f "\n",##__VA_ARGS__)
-#else
-    #define    debug(f,...)
-#endif
-
 void UGrad(int num);
 void UGrad2(int num);
 void Grad(int num);
@@ -30,46 +23,41 @@ pid_t p;
 int prev_student=0;
 
 int main(void){
-//1-6 6 grads
+  //1-6 6 grads
   //7-8 2 ugrads
 
-semEating = sem_init(1); //1 means no one is eating, free.
-semUGrad  = sem_init(2); //2 total undergrads
-semGrad   = sem_init(2); //2 total undergrads
+  semEating = sem_init(1); //1 means no one is eating, free.
+  semUGrad  = sem_init(2); //2 total undergrads
+  semGrad   = sem_init(2); //2 total grads
 
-int i;
+  int i;
 
-srand(time(NULL));
-while(1){
-debug("While loop begins..");
-for(i=0;i<numStudents;i++){
-debug("For loop begins..");
-int student = prev_student;
-
-while(prev_student == student){
-student = (rand() % (numStudents))+1;
-
-}
-
-if( (p=fork()) == 0){ //child process
-if(student < 7){
-Grad(student);
-}
- else{
-UGrad(student);
-}
-prev_student=0;
-exit(0);
-}
- else{
-childPids[i]=p;
-}
-}
-}
-return 0;
+  srand(time(NULL));
+  // while(1){
+    for(i=0;i<numStudents;i++){
+      int student = prev_student;
+      while(prev_student == student)
+	(rand() % (numStudents))+1;
+      
+      if( (p=fork()) == 0){//child process
+	if(student < 7)
+	  Grad(student);
+	else
+	  UGrad(student);
+	prev_student=0;
+	//exit(0);
+      }
+      else
+	childPids[i]=p;
+    }
+    
+    //}
+  
+  return 0;
 }
 
 void UGrad(int num){
+
   if(prev_student == 7 || prev_student==8){
     UGrad2(num);
   }
