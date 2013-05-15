@@ -89,9 +89,9 @@ void UGrad(int num){
 //  else{
     sem_down(semUGrad);
     sem_down(semEating); 
-    prev_student = num;
+// prev_student = num;
     UGradEat(num);
-    prev_student = num;
+//    prev_student = num;
     sem_up(semEating);
     sem_up(semUGrad);
 //  }
@@ -115,7 +115,7 @@ void Grad(int num){
 //   else{
      sem_down(semGrad);
      sem_down(semEating); 
-     prev_student = num;
+//     prev_student = num;
      GradEat(num);
      //prev_student = num;
      sem_up(semEating);
