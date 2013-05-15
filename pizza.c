@@ -47,31 +47,30 @@ int main(void){
       int student = prev_student;
 
       while(prev_student == student){
-        debug("choosing a student at random to get pizza");
        	student = (rand() % (numStudents))+1;
-        debug("student: %d\n",student);
+        debug("student getting pizza: %d\n",student);
        }
 
 
         debug("about to fork");
-if( (p=fork()) == 0){ //child process
+//     if( (p=fork()) == 0){ //child process
         	debug("if-else statements for fork begin");
           if(student < 7){
                   debug("Student number: %d\n", student);
         	  Grad(student);
           }
-        	else{
+          else{
                   debug("Student number: %d\n", student);
         	  UGrad(student);
           }
       	prev_student=0;
-      	exit(0);
-    }
-      else{
-      	childPids[i]=p;
-      }
-      debug("all students have eaten");
-    }
+//    	exit(0);
+//  }
+//      else{
+//      	childPids[i]=p;
+//      }
+// debug("all students have eaten");
+   } 
   }
   return 0;
 }
