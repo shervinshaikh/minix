@@ -38,9 +38,10 @@ int main(void){
   semGrad   = sem_init(2); //2 total undergrads
 
   int i;
-
+int j=0;
   srand(time(NULL));
- while(1){
+// while(1){
+for(int j=0;j<=100;j++){
     debug("While loop begins..");
     for(i=0;i<numStudents;i++){
       debug("For loop begins..");
@@ -85,7 +86,7 @@ void UGrad(int num){
 // if(prev_student == 7 || prev_student==8){
 //    UGrad2(num);
 //  }
-  else{
+//  else{
     sem_down(semUGrad);
     sem_down(semEating); 
     prev_student = num;
