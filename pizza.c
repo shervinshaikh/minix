@@ -62,8 +62,8 @@ void UGrad(int num){
     UGrad2(num);
   }
   else{
-    sem_down(semEating); 
     sem_down(semUGrad);
+    sem_down(semEating); 
     prev_student = num;
     UGradEat(num);
     prev_student = num;
@@ -88,8 +88,8 @@ void Grad(int num){
     Grad2(num);
   }
    else{
-     sem_down(semEating); 
      sem_down(semGrad);
+     sem_down(semEating); 
      prev_student = num;
      GradEat(num);
      //prev_student = num;
