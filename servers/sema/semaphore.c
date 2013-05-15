@@ -126,8 +126,17 @@ int do_sem_init(message *m_ptr){
 	}
 
 	if(arraySize >= nextValue){
-		semaphores[nextValue]->value = start_value;
-		semaphores[nextValue]->isValid = 1;
+		int found = 0, j=0;
+		while(found == 0 && j<arraySize){
+			if(semaphores[j]->isValid == 0){
+				found = 1;
+			}
+			else{
+				j++;
+			}
+		}
+		semaphores[j]->value = start_value;
+		semaphores[j]->isValid = 1;
 	}
 	else{
 		arraySize = arraySize + 10;
