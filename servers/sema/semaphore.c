@@ -115,6 +115,7 @@ int main(void)
 
 int do_sem_init(message *m_ptr){
 	int start_value = m_ptr->m1_i1;
+	int j;
 	//debug("---------------  INIT");
 	//debug("server, Start value: %d", start_value);
 
@@ -125,7 +126,8 @@ int do_sem_init(message *m_ptr){
 		return ENOMEM;
 	}
 	if(arraySize >= nextValue){
-		int found = 0, j=0;
+		int found = 0;
+		j=0;
 		while(found == 0 && j<arraySize){
 			debug(".....Sem: %d, isValid: %d", j, semaphores[j]->isValid);
 			if(semaphores[j]->isValid == 0){
@@ -149,10 +151,12 @@ int do_sem_init(message *m_ptr){
 			semaphores[k]->isValid = 0;
 		}
 	}
-
-	debug("SEM_INIT, sem number: %d, start value: %d", nextValue, semaphores[nextValue]->value);
+	if(j > nextValue){
+		nextValue = j;
+	}
+	debug("SEM_INIT, sem number: %d, start value: %d", j, semaphores[nextValue]->value);
 	arraySize++;
-	return nextValue++;
+	return j;
 }
 
 int do_sem_down(message *m_ptr){
@@ -209,7 +213,7 @@ int do_sem_release(message *m_ptr){
 	//semaphores[semNumber]->q = NULL;
 	clear_queue(semaphores[semNumber]->q);
 
-	debug("Sem: %d, was released. isValid: %d", semNumber, semaphores[semNumber]->isValid)
+	debug("Sem: %d, was released. isValid: %d", semNumber, semaphores[semNumber]->isValid);
 
 	return OK;
 }
