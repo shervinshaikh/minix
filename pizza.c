@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define DEBUG
+#ifdef DEBUG
+    #define    debug(f,...)    fprintf(stderr,f "\n",##__VA_ARGS__)
+#else
+    #define    debug(f,...)
+#endif
+
 void UGrad(int num);
 void UGrad2(int num);
 void Grad(int num);
@@ -34,12 +41,15 @@ int main(void){
 
   srand(time(NULL));
   while(1){
+    debug("While loop begins..");
     for(i=0;i<numStudents;i++){
+      debug("For loop begins..");
       int student = prev_student;
 
-      while(prev_student == student){
-      	(rand() % (numStudents))+1;
-      }
+      // while(prev_student == student){
+      // 	(rand() % (numStudents))+1;
+        
+      // }
 
       if( (p=fork()) == 0){ //child process
         	if(student < 7){
@@ -60,7 +70,6 @@ int main(void){
 }
 
 void UGrad(int num){
-
   if(prev_student == 7 || prev_student==8){
     UGrad2(num);
   }
