@@ -155,7 +155,7 @@ int do_sem_down(message *m_ptr){
 	}
 	else if(semaphores[semNumber]->value > 0){ // available semaphore then decresase
 		semaphores[semNumber]->value--;
-		debug("SEM_DOWN old: %d, new: %d", semaphores[semNumber]->value+1, semaphores[semNumber]->value);
+		debug("SEM_DOWN. seme#:%d,  old: %d, new: %d", semNumber, semaphores[semNumber]->value+1, semaphores[semNumber]->value);
 		return OK;
 	}
 	debug("about to add pid: %d to the queue", source);
