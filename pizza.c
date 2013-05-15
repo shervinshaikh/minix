@@ -41,7 +41,7 @@ int main(void){
 int j=0;
   srand(time(NULL));
 // while(1){
-for(int j=0;j<=100;j++){
+for( j=0;j<=10;j++){
     debug("While loop begins..");
     for(i=0;i<numStudents;i++){
       debug("For loop begins..");
