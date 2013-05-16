@@ -10,16 +10,16 @@ int main(){
 	int gsem = sem_init(2);
 	int usem = sem_init(2);
 
-	Grad(mutex, gsem);
-	// while(i<20){
-		// if(fork() == 0){
-		// 	Grad(mutex, gsem);
-		// }
-		// else{
-		// 	UGrad(mutex, usem);
-		// }
-		// i++;
-	// }
+	// Grad(mutex, gsem);
+	while(i<1){
+		if(fork() == 0){
+			Grad(mutex, gsem);
+		}
+		else{
+			UGrad(mutex, usem);
+		}
+		i++;
+	}
 
 	sem_release(mutex);
 	sem_release(gsem);
