@@ -19,7 +19,7 @@ void Grad(int mutex, int gsem){
 
 void GradEat(int gsem, int k){
 	sem_down(gsem);
-	printf("Grad%d is eating...", k);
+	printf("Grad%d is eating...\n", k);
 	sem_up(gsem);
 	return;
 }
