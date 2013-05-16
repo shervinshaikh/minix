@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "main.h"
 
 void Grad(int mutex, int gsem){
 	int i = 0;
@@ -11,7 +11,7 @@ void Grad(int mutex, int gsem){
 			fork();
 			GradEat(gsem, k);
 		}
-		sem_down(mutex);	
+		sem_up(mutex);	
 		i++;
 	}
 	return;

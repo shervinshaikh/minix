@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "main.h"
 
 void UGrad(int mutex, int usem){
 	int i = 0;
@@ -13,7 +13,7 @@ void UGrad(int mutex, int usem){
 		else{
 			UGrad2(usem);
 		}
-		sem_down(mutex);
+		sem_up(mutex);
 		i++;
 	}
 	return;
