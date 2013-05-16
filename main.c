@@ -14,9 +14,10 @@ int main(){
 	//while(i<1){
 		if(fork() == 0){
 			Grad(mutex, gsem);
+			UGrad(mutex, usem);
 		}
 		else{
-			UGrad(mutex, usem);
+			
 		}
 		//i++;
 	//}
