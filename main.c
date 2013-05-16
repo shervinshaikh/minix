@@ -30,7 +30,7 @@ int main(){
 
 
 void UGrad(int mutex, int usem){
-	int i = 0;
+	int i = 0, k;
 	while(i<1){ // change to run forever
 		sem_down(mutex);
 		printf("---Only Undergrads can eat\n");
