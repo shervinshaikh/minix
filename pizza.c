@@ -35,7 +35,7 @@ int main(void){
 
   semEating = sem_init(1); //1 means no one is eating, free.
   semUGrad  = sem_init(2); //2 total undergrads
-  semGrad   = sem_init(2); //2 total undergrads
+  semGrad   = sem_init(2); //2 total grads
 
   int i;
 int j=0;

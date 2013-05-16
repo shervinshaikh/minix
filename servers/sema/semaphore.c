@@ -76,6 +76,7 @@ int main(void)
 	/* This is SEMAPHORE's main loop-  get work and do it, forever and forever. */
 	while (TRUE) {
 		int ipc_status;
+		result = OK;
 
 		//debug("IN THE WHILE STATE FOR SEMA");
 
@@ -119,7 +120,7 @@ int do_sem_init(message *m_ptr){
 	//debug("---------------  INIT");
 	//debug("server, Start value: %d", start_value);
 
-	if(start_value <= 0){
+	if(start_value < 0){
 		return EPERM;
 	}
 	if(semaphores == NULL){ // out of memory failure
@@ -173,7 +174,7 @@ int do_sem_down(message *m_ptr){
 		return OK;
 	}
 	debug("about to add pid: %d to the queue", source);
-	debug("address of q->front: %p", semaphores[semNumber]->q->front); 
+	// debug("address of q->front: %p", semaphores[semNumber]->q->front); 
 	// add it to the queue and return not reply 
 	enqueue(semaphores[semNumber]->q, source);
 	return EDONTREPLY;
