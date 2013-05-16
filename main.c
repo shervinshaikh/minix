@@ -72,6 +72,7 @@ void Grad(int mutex, int gsem){
 				GradEat(gsem, k);
 		}
 		sem_up(mutex);	
+		printf("gave up mutex\n");
 		i++;
 	}
 	return;
