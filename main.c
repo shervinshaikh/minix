@@ -50,6 +50,7 @@ void UGradEat(int usem, int k){
 	sem_down(usem);
 	printf("-------UGrad%d is eating...\n", k);
 	sem_up(usem);
+	printf("-------UGrad%d is done\n", k);
 	return;
 }
 
@@ -74,5 +75,6 @@ void GradEat(int gsem, int k){
 	sem_down(gsem);
 	printf("+++++++++++Grad%d is eating...\n", k);
 	sem_up(gsem);
+	printf("+++++++++++Grad%d is done\n", k);
 	return;
 }
