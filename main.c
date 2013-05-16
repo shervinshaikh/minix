@@ -11,15 +11,15 @@ int main(){
 	int usem = sem_init(2);
 
 	// Grad(mutex, gsem);
-	while(i<1){
+	//while(i<1){
 		if(fork() == 0){
 			Grad(mutex, gsem);
 		}
 		else{
 			UGrad(mutex, usem);
 		}
-		i++;
-	}
+		//i++;
+	//}
 
 	sem_release(mutex);
 	sem_release(gsem);
@@ -32,7 +32,7 @@ int main(){
 
 void UGrad(int mutex, int usem){
 	int i = 0;
-	while(i<20){ // change to run forever
+	while(i<1){ // change to run forever
 		sem_down(mutex);
 
 		if(fork() == 0){
@@ -63,7 +63,7 @@ void UGrad2(int usem){
 
 void Grad(int mutex, int gsem){
 	int i = 0;
-	while(i<2){ // change to run forever
+	while(i<1){ // change to run forever
 		sem_down(mutex);
 		int k;
 		printf("grabbed mutex\n");
