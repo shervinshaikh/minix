@@ -35,6 +35,7 @@ void UGrad(int mutex, int usem){
 	int i = 0;
 	while(i<1){ // change to run forever
 		sem_down(mutex);
+		printf("---Only Undergrads can eat\n");
 
 		if(fork() == 0){
 			UGrad1(usem);
@@ -43,6 +44,7 @@ void UGrad(int mutex, int usem){
 			UGrad2(usem);
 		}
 		sem_up(mutex);
+		printf("---Undergrads done eating\n");
 		i++;
 	}
 	return;
@@ -50,14 +52,14 @@ void UGrad(int mutex, int usem){
 
 void UGrad1(int usem){
 	sem_down(usem);
-	printf("UGrad1 is eating...\n");
+	printf("---UGrad1 is eating...\n");
 	sem_up(usem);
 	return;
 }
 
 void UGrad2(int usem){
 	sem_down(usem);
-	printf("Ugrad2 is eating...\n");
+	printf("----UGrad2 is eating...\n");
 	sem_up(usem);
 	return;
 }
@@ -67,13 +69,13 @@ void Grad(int mutex, int gsem){
 	while(i<1){ // change to run forever
 		sem_down(mutex);
 		int k;
-		printf("grabbed mutex\n");
+		printf("Only grads can eat\n");
 		for(k=0; k<=5; k++){
 			if(fork() == 0)
 				GradEat(gsem, k);
 		}
 		sem_up(mutex);	
-		printf("gave up mutex\n");
+		printf("Grads are done eating\n");
 		i++;
 	}
 	return;
