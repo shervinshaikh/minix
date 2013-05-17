@@ -1,0 +1,65 @@
+diff -ruNp minix_src_clean/.git/COMMIT_EDITMSG proj0/minix_src_clean/.git/COMMIT_EDITMSG
+--- minix_src_clean/.git/COMMIT_EDITMSG	2013-04-07 21:02:13.385066096 -0700
++++ proj0/minix_src_clean/.git/COMMIT_EDITMSG	2013-04-10 20:28:22.983965273 -0700
+@@ -1 +1 @@
+-proj0 rsync
++update printf line
+Binary files minix_src_clean/.git/index and proj0/minix_src_clean/.git/index differ
+diff -ruNp minix_src_clean/.git/logs/HEAD proj0/minix_src_clean/.git/logs/HEAD
+--- minix_src_clean/.git/logs/HEAD	2013-04-07 20:45:51.755921284 -0700
++++ proj0/minix_src_clean/.git/logs/HEAD	2013-04-10 20:28:23.106900141 -0700
+@@ -1,3 +1,4 @@
+ 0000000000000000000000000000000000000000 972156d595e8a959a5204e158fa8f16b99e443d4 Ben Gras <ben@minix3.org> 1360927074 +0000	clone: from git://git.minix3.org/minix
+ 972156d595e8a959a5204e158fa8f16b99e443d4 0c8c5a4758df47dee930e5b0245a1035e1b9055b Shervin Shaikh <shervinater@eeyore.cs.ucsb.edu> 1365392701 -0700	commit: initial commit
+ 0c8c5a4758df47dee930e5b0245a1035e1b9055b 7d2e9211b851deb88c969fe122d174c0ab5e33c9 Shervin Shaikh <shervinater@gmail.com> 1365392743 -0700	commit (amend): initial commit
++7d2e9211b851deb88c969fe122d174c0ab5e33c9 8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734 Shervin Shaikh <shervinater@gmail.com> 1365650902 -0700	commit: update printf line
+diff -ruNp minix_src_clean/.git/logs/refs/heads/master proj0/minix_src_clean/.git/logs/refs/heads/master
+--- minix_src_clean/.git/logs/refs/heads/master	2013-04-07 20:45:51.752966188 -0700
++++ proj0/minix_src_clean/.git/logs/refs/heads/master	2013-04-10 20:28:23.101900170 -0700
+@@ -1,3 +1,4 @@
+ 0000000000000000000000000000000000000000 972156d595e8a959a5204e158fa8f16b99e443d4 Ben Gras <ben@minix3.org> 1360927074 +0000	clone: from git://git.minix3.org/minix
+ 972156d595e8a959a5204e158fa8f16b99e443d4 0c8c5a4758df47dee930e5b0245a1035e1b9055b Shervin Shaikh <shervinater@eeyore.cs.ucsb.edu> 1365392701 -0700	commit: initial commit
+ 0c8c5a4758df47dee930e5b0245a1035e1b9055b 7d2e9211b851deb88c969fe122d174c0ab5e33c9 Shervin Shaikh <shervinater@gmail.com> 1365392743 -0700	commit (amend): initial commit
++7d2e9211b851deb88c969fe122d174c0ab5e33c9 8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734 Shervin Shaikh <shervinater@gmail.com> 1365650902 -0700	commit: update printf line
+diff -ruNp minix_src_clean/.git/logs/refs/remotes/origin/master proj0/minix_src_clean/.git/logs/refs/remotes/origin/master
+--- minix_src_clean/.git/logs/refs/remotes/origin/master	2013-04-07 20:53:39.429885220 -0700
++++ proj0/minix_src_clean/.git/logs/refs/remotes/origin/master	2013-04-10 20:28:53.658009059 -0700
+@@ -1 +1,2 @@
+ 0000000000000000000000000000000000000000 7d2e9211b851deb88c969fe122d174c0ab5e33c9 Shervin Shaikh <shervinater@gmail.com> 1365393219 -0700	update by push
++7d2e9211b851deb88c969fe122d174c0ab5e33c9 8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734 Shervin Shaikh <shervinater@gmail.com> 1365650933 -0700	update by push
+Binary files minix_src_clean/.git/objects/30/b95706c9eb41fbba5137e977dee99eb3441c87 and proj0/minix_src_clean/.git/objects/30/b95706c9eb41fbba5137e977dee99eb3441c87 differ
+Binary files minix_src_clean/.git/objects/53/6ccd4fd552c6e613d3405a39ad90fe75f3ebd1 and proj0/minix_src_clean/.git/objects/53/6ccd4fd552c6e613d3405a39ad90fe75f3ebd1 differ
+Binary files minix_src_clean/.git/objects/7c/b2bc793fae8fa0fa0298dca5f46eebb880b8f6 and proj0/minix_src_clean/.git/objects/7c/b2bc793fae8fa0fa0298dca5f46eebb880b8f6 differ
+diff -ruNp minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734 proj0/minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734
+--- minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734	1969-12-31 16:00:00.000000000 -0800
++++ proj0/minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734	2013-04-10 20:28:23.069899589 -0700
+@@ -0,0 +1,2 @@
++xùéÎ¬0É˘ù)nP.è¶'!ƒLê«ïF¥iRÊ'ÀÚ'Àv‹÷57PFüZe-Y'áHN!xã⁄19óò©Cm∆—â›W.\RL
++1åáqå4–ƒ®TBg¢Ù¡≤÷ëÑ?⁄ºUxÃ\?πtı˘5√ı˝ÛæqΩ?WüóK‹÷†Ï`%IgÈ§ùˆü=ıwÉ8ˆ‘g`Øπ¥	ñ\X|Å¡N±
+\ No newline at end of file
+Binary files minix_src_clean/.git/objects/9f/05d358e10570f8da876778f2ee2e90c3dc2c92 and proj0/minix_src_clean/.git/objects/9f/05d358e10570f8da876778f2ee2e90c3dc2c92 differ
+diff -ruNp minix_src_clean/.git/refs/heads/master proj0/minix_src_clean/.git/refs/heads/master
+--- minix_src_clean/.git/refs/heads/master	2013-04-07 20:45:51.750964624 -0700
++++ proj0/minix_src_clean/.git/refs/heads/master	2013-04-10 20:28:23.085899924 -0700
+@@ -1 +1 @@
+-7d2e9211b851deb88c969fe122d174c0ab5e33c9
++8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734
+diff -ruNp minix_src_clean/.git/refs/remotes/origin/master proj0/minix_src_clean/.git/refs/remotes/origin/master
+--- minix_src_clean/.git/refs/remotes/origin/master	2013-04-07 20:53:39.422952335 -0700
++++ proj0/minix_src_clean/.git/refs/remotes/origin/master	2013-04-10 20:28:53.647010097 -0700
+@@ -1 +1 @@
+-7d2e9211b851deb88c969fe122d174c0ab5e33c9
++8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734
+diff -ruNp minix_src_clean/kernel/system/do_exec.c proj0/minix_src_clean/kernel/system/do_exec.c
+--- minix_src_clean/kernel/system/do_exec.c	2013-02-15 03:18:13.000000000 -0800
++++ proj0/minix_src_clean/kernel/system/do_exec.c	2013-04-10 19:12:38.527972556 -0700
+@@ -39,6 +39,9 @@ int do_exec(struct proc * caller, messag
+   	strncpy(name, "<unset>", PROC_NAME_LEN);
+ 
+   name[sizeof(name)-1] = '\0';
++	
++  // New line added here to print the name of the file that is being executed
++  printf("executing... %s \n", name);
+ 
+   /* Set process state. */
+   arch_proc_init(rp, (u32_t) m_ptr->PR_IP_PTR, (u32_t) m_ptr->PR_STACK_PTR, name);

@@ -1,65 +1,672 @@
-diff -ruNp minix_src_clean/.git/COMMIT_EDITMSG proj0/minix_src_clean/.git/COMMIT_EDITMSG
---- minix_src_clean/.git/COMMIT_EDITMSG	2013-04-07 21:02:13.385066096 -0700
-+++ proj0/minix_src_clean/.git/COMMIT_EDITMSG	2013-04-10 20:28:22.983965273 -0700
-@@ -1 +1 @@
--proj0 rsync
-+update printf line
-Binary files minix_src_clean/.git/index and proj0/minix_src_clean/.git/index differ
-diff -ruNp minix_src_clean/.git/logs/HEAD proj0/minix_src_clean/.git/logs/HEAD
---- minix_src_clean/.git/logs/HEAD	2013-04-07 20:45:51.755921284 -0700
-+++ proj0/minix_src_clean/.git/logs/HEAD	2013-04-10 20:28:23.106900141 -0700
-@@ -1,3 +1,4 @@
- 0000000000000000000000000000000000000000 972156d595e8a959a5204e158fa8f16b99e443d4 Ben Gras <ben@minix3.org> 1360927074 +0000	clone: from git://git.minix3.org/minix
- 972156d595e8a959a5204e158fa8f16b99e443d4 0c8c5a4758df47dee930e5b0245a1035e1b9055b Shervin Shaikh <shervinater@eeyore.cs.ucsb.edu> 1365392701 -0700	commit: initial commit
- 0c8c5a4758df47dee930e5b0245a1035e1b9055b 7d2e9211b851deb88c969fe122d174c0ab5e33c9 Shervin Shaikh <shervinater@gmail.com> 1365392743 -0700	commit (amend): initial commit
-+7d2e9211b851deb88c969fe122d174c0ab5e33c9 8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734 Shervin Shaikh <shervinater@gmail.com> 1365650902 -0700	commit: update printf line
-diff -ruNp minix_src_clean/.git/logs/refs/heads/master proj0/minix_src_clean/.git/logs/refs/heads/master
---- minix_src_clean/.git/logs/refs/heads/master	2013-04-07 20:45:51.752966188 -0700
-+++ proj0/minix_src_clean/.git/logs/refs/heads/master	2013-04-10 20:28:23.101900170 -0700
-@@ -1,3 +1,4 @@
- 0000000000000000000000000000000000000000 972156d595e8a959a5204e158fa8f16b99e443d4 Ben Gras <ben@minix3.org> 1360927074 +0000	clone: from git://git.minix3.org/minix
- 972156d595e8a959a5204e158fa8f16b99e443d4 0c8c5a4758df47dee930e5b0245a1035e1b9055b Shervin Shaikh <shervinater@eeyore.cs.ucsb.edu> 1365392701 -0700	commit: initial commit
- 0c8c5a4758df47dee930e5b0245a1035e1b9055b 7d2e9211b851deb88c969fe122d174c0ab5e33c9 Shervin Shaikh <shervinater@gmail.com> 1365392743 -0700	commit (amend): initial commit
-+7d2e9211b851deb88c969fe122d174c0ab5e33c9 8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734 Shervin Shaikh <shervinater@gmail.com> 1365650902 -0700	commit: update printf line
-diff -ruNp minix_src_clean/.git/logs/refs/remotes/origin/master proj0/minix_src_clean/.git/logs/refs/remotes/origin/master
---- minix_src_clean/.git/logs/refs/remotes/origin/master	2013-04-07 20:53:39.429885220 -0700
-+++ proj0/minix_src_clean/.git/logs/refs/remotes/origin/master	2013-04-10 20:28:53.658009059 -0700
-@@ -1 +1,2 @@
- 0000000000000000000000000000000000000000 7d2e9211b851deb88c969fe122d174c0ab5e33c9 Shervin Shaikh <shervinater@gmail.com> 1365393219 -0700	update by push
-+7d2e9211b851deb88c969fe122d174c0ab5e33c9 8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734 Shervin Shaikh <shervinater@gmail.com> 1365650933 -0700	update by push
-Binary files minix_src_clean/.git/objects/30/b95706c9eb41fbba5137e977dee99eb3441c87 and proj0/minix_src_clean/.git/objects/30/b95706c9eb41fbba5137e977dee99eb3441c87 differ
-Binary files minix_src_clean/.git/objects/53/6ccd4fd552c6e613d3405a39ad90fe75f3ebd1 and proj0/minix_src_clean/.git/objects/53/6ccd4fd552c6e613d3405a39ad90fe75f3ebd1 differ
-Binary files minix_src_clean/.git/objects/7c/b2bc793fae8fa0fa0298dca5f46eebb880b8f6 and proj0/minix_src_clean/.git/objects/7c/b2bc793fae8fa0fa0298dca5f46eebb880b8f6 differ
-diff -ruNp minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734 proj0/minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734
---- minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734	1969-12-31 16:00:00.000000000 -0800
-+++ proj0/minix_src_clean/.git/objects/8d/e1dc2e017d0b0e8ba768d59a119c6c3fb0f734	2013-04-10 20:28:23.069899589 -0700
-@@ -0,0 +1,2 @@
-+xŽëÂ0ƒù)nP.¦'!ÄLÇ•F´iRæ'ðËò'ËvÜÖ57PFŸZe-Y'‡HN!x‹Ú19—˜©CmÆÑ‰ÝW.\RL
-+1Œ‡qŒ4ÐÄ¨TBg¢ôÁ²Ö‘„?Ú¼UxÌ\?¹tõù5Ãõýó¾q½?WŸ—KÜÖ ì`%Igé¤öŸ=õwƒ8öÔg`¯¹´	–\X|ÁN±
+diff -ruNp minix_src_clean/etc/system.conf clean/etc/system.conf
+--- minix_src_clean/etc/system.conf	2013-02-15 03:18:13.000000000 -0800
++++ clean/etc/system.conf	2013-05-16 11:34:59.580999218 -0700
+@@ -49,6 +49,13 @@ service vm
+ 	quantum	       500;	# default server quantum
+ };
+ 
++service sema
++{
++	uid     0;
++	ipc	ALL;		# ALL ipc targets allowed
++	system	ALL;		# ALL kernel calls allowed
++};
++
+ service pm
+ {
+ 	uid     0;
+diff -ruNp minix_src_clean/include/minix/callnr.h clean/include/minix/callnr.h
+--- minix_src_clean/include/minix/callnr.h	2013-02-15 03:18:13.000000000 -0800
++++ clean/include/minix/callnr.h	2013-05-16 11:34:59.593004658 -0700
+@@ -65,6 +65,7 @@
+ #define SETGROUPS_O	  66
+ #define GETMCONTEXT       67
+ #define SETMCONTEXT       68
++#define SEM_INIT	  69
+ 
+ /* Posix signal handling. */
+ #define SIGACTION	  71
+@@ -103,6 +104,11 @@
+ #define GETPROCNR	104	/* to PM */
+ #define ISSETUGID	106	/* to PM: ask if process is tainted */
+ #define GETEPINFO_O	107	/* to PM: get pid/uid/gid of an endpoint */
++
++#define SEM_DOWN 108
++#define SEM_UP 109
++#define SEM_RELEASE 110
++
+ #define SRV_KILL  	111	/* to PM: special kill call for RS */
+ 
+ #define GCOV_FLUSH	112	/* flush gcov data from server to gcov files */
+diff -ruNp minix_src_clean/include/minix/com.h clean/include/minix/com.h
+--- minix_src_clean/include/minix/com.h	2013-02-15 03:18:13.000000000 -0800
++++ clean/include/minix/com.h	2013-05-16 11:34:59.590004189 -0700
+@@ -80,7 +80,8 @@
+ #define VM_PROC_NR   ((endpoint_t) 8)   /* memory server */
+ #define PFS_PROC_NR  ((endpoint_t) 9)  /* pipe filesystem */
+ #define SCHED_PROC_NR ((endpoint_t) 10)	/* scheduler */
+-#define LAST_SPECIAL_PROC_NR	11	/* An untyped version for
++#define SEMA_PROC_NR ((endpoint_t) 11)
++#define LAST_SPECIAL_PROC_NR	12	/* An untyped version for
+                                            computation in macros.*/
+ #define INIT_PROC_NR ((endpoint_t) LAST_SPECIAL_PROC_NR)  /* init
+                                                         -- goes multiuser */
+diff -ruNp minix_src_clean/include/unistd.h clean/include/unistd.h
+--- minix_src_clean/include/unistd.h	2013-02-15 03:18:13.000000000 -0800
++++ clean/include/unistd.h	2013-05-16 11:34:59.597004156 -0700
+@@ -146,6 +146,12 @@ __aconst char *ttyname(int);
+ int	 unlink(const char *);
+ ssize_t	 write(int, const void *, size_t);
+ 
++/* DEFINING SEMAPHORE */
++// int semaphore(void);
++int sem_init(int start_value);
++int sem_down(int semaphore_number);
++int sem_up(int semaphore_number);
++int sem_release(int semaphore);
+ 
+ /*
+  * IEEE Std 1003.2-92, adopted in X/Open Portability Guide Issue 4 and later
+diff -ruNp minix_src_clean/kernel/debug.h clean/kernel/debug.h
+--- minix_src_clean/kernel/debug.h	2013-02-15 03:18:13.000000000 -0800
++++ clean/kernel/debug.h	2013-05-16 11:34:59.604003842 -0700
+@@ -24,7 +24,7 @@
+  * Of course the call still fails, but nothing is printed if these warnings
+  * are disabled.
+  */
+-#define DEBUG_ENABLE_IPC_WARNINGS	1
++#define DEBUG_ENABLE_IPC_WARNINGS	0
+ 
+ /* Sanity checks. */
+ #define DEBUG_SANITYCHECKS		0
+diff -ruNp minix_src_clean/kernel/proc.c clean/kernel/proc.c
+--- minix_src_clean/kernel/proc.c	2013-02-15 03:18:13.000000000 -0800
++++ clean/kernel/proc.c	2013-05-16 11:34:59.608967369 -0700
+@@ -470,7 +470,7 @@ static int do_sync_ipc(struct proc * cal
+ 				callname,
+ 				caller_ptr->p_endpoint, src_dst_e);
+ #endif
+-			return(ECALLDENIED);	/* call denied by ipc mask */
++			//return(ECALLDENIED);	/* call denied by ipc mask */
+ 		}
+ 	}
+   }
+diff -ruNp minix_src_clean/kernel/table.c clean/kernel/table.c
+--- minix_src_clean/kernel/table.c	2013-02-15 03:18:14.000000000 -0800
++++ clean/kernel/table.c	2013-05-16 11:34:59.600955233 -0700
+@@ -53,15 +53,16 @@ struct boot_image image[NR_BOOT_PROCS] =
+ {DS_PROC_NR,    "ds"    },
+ {RS_PROC_NR,    "rs"    },
+                       
+-{PM_PROC_NR,    "pm"    },
+-{SCHED_PROC_NR, "sched" },
+-{VFS_PROC_NR,   "vfs"   },
+-{MEM_PROC_NR,   "memory"},
+-{LOG_PROC_NR,   "log"   },
+-{TTY_PROC_NR,   "tty"   },
+-{MFS_PROC_NR,   "mfs"   },
+-{VM_PROC_NR,    "vm"    },
+-{PFS_PROC_NR,   "pfs"   },
+-{INIT_PROC_NR,  "init"  },
++{PM_PROC_NR,    "pm"       },
++{SCHED_PROC_NR, "sched"    },
++{VFS_PROC_NR,   "vfs"      },
++{MEM_PROC_NR,   "memory"   },
++{LOG_PROC_NR,   "log"      },
++{TTY_PROC_NR,   "tty"      },
++{MFS_PROC_NR,   "mfs"      },
++{VM_PROC_NR,    "vm"       },
++{PFS_PROC_NR,   "pfs"      },
++{SEMA_PROC_NR,  "sema"},
++{INIT_PROC_NR,  "init"     },
+ };
+ 
+diff -ruNp minix_src_clean/lib/libc/sys-minix/Makefile.inc clean/lib/libc/sys-minix/Makefile.inc
+--- minix_src_clean/lib/libc/sys-minix/Makefile.inc	2013-02-15 03:18:14.000000000 -0800
++++ clean/lib/libc/sys-minix/Makefile.inc	2013-05-16 11:34:59.621071566 -0700
+@@ -16,7 +16,7 @@ SRCS+= 	accept.c access.c bind.c brk.c s
+ 	vectorio.c shutdown.c sigaction.c sigpending.c sigreturn.c sigsuspend.c\
+ 	sigprocmask.c socket.c socketpair.c stat.c statvfs.c symlink.c \
+ 	sync.c syscall.c sysuname.c truncate.c umask.c unlink.c write.c \
+-	_exit.c _ucontext.c environ.c __getcwd.c vfork.c sizeup.c init.c
++	_exit.c _ucontext.c environ.c __getcwd.c vfork.c sizeup.c init.c semaphore.c
+ 
+ # Minix specific syscalls.
+ SRCS+= cprofile.c lseek64.c sprofile.c _mcontext.c
+diff -ruNp minix_src_clean/lib/libc/sys-minix/semaphore.c clean/lib/libc/sys-minix/semaphore.c
+--- minix_src_clean/lib/libc/sys-minix/semaphore.c	1969-12-31 16:00:00.000000000 -0800
++++ clean/lib/libc/sys-minix/semaphore.c	2013-05-16 11:34:59.616983792 -0700
+@@ -0,0 +1,64 @@
++#include <lib.h>
++#include <unistd.h>
++#include <minix/callnr.h>
++#include <minix/ipc.h>
++#include <minix/com.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++//#define DEBUG
++#ifdef DEBUG
++    #define    debug(f,...)    fprintf(stderr,f "\n",##__VA_ARGS__)
++#else
++    #define    debug(f,...)
++#endif
++
++#define OK 0
++
++int sem_init(int start_value){
++	debug("--------------- calling Semaphore INIT");
++
++	message m;
++	m.m_type = SEM_INIT;
++	m.m1_i1 = start_value;
++	//debug("library, Start value: %d", m.m1_i1);
++	debug("_syscall(SEMA_PROC_NR:%d, SEM_INIT:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_INIT, m.m_type);
++	_syscall(SEMA_PROC_NR, SEM_INIT, &m);
++	return 1; // next available semaphore value
++}
++
++int sem_down(int semaphore_number){
++	debug("--------------- calling Semaphore DOWN");
++
++	message m;
++	m.m_type = SEM_DOWN;
++	m.m1_i2 = semaphore_number;
++	//debug("library, Semaphore number: %d", m.m1_i2);
++	debug("_syscall(SEMA_PROC_NR:%d, SEM_DOWN:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_DOWN, m.m_type);
++	_syscall(SEMA_PROC_NR, SEM_DOWN, &m);
++	return OK;
++}
++
++int sem_up(int semaphore_number){
++	debug("--------------- calling Semaphore UP");
++
++	message m;
++	m.m_type = SEM_UP;
++	m.m1_i2 = semaphore_number;
++	//debug("library, Semaphore number: %d", m.m1_i2);
++	debug("_syscall(SEMA_PROC_NR:%d, SEM_UP:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_UP, m.m_type);
++	_syscall(SEMA_PROC_NR, SEM_UP, &m);
++	return OK;
++}
++
++int sem_release(int semaphore){
++	debug("--------------- calling Semaphore RELEASED");
++
++	message m;
++	m.m_type = SEM_RELEASE;
++	m.m1_i3 = semaphore;
++	//debug("library, Semaphore: %d", m.m1_i3);
++	debug("_syscall(SEMA_PROC_NR:%d, SEM_RELEASE:%d, m.m_type:%d)", SEMA_PROC_NR, SEM_RELEASE, m.m_type);
++	_syscall(SEMA_PROC_NR, SEM_RELEASE, &m);
++	return OK;
++}
 \ No newline at end of file
-Binary files minix_src_clean/.git/objects/9f/05d358e10570f8da876778f2ee2e90c3dc2c92 and proj0/minix_src_clean/.git/objects/9f/05d358e10570f8da876778f2ee2e90c3dc2c92 differ
-diff -ruNp minix_src_clean/.git/refs/heads/master proj0/minix_src_clean/.git/refs/heads/master
---- minix_src_clean/.git/refs/heads/master	2013-04-07 20:45:51.750964624 -0700
-+++ proj0/minix_src_clean/.git/refs/heads/master	2013-04-10 20:28:23.085899924 -0700
-@@ -1 +1 @@
--7d2e9211b851deb88c969fe122d174c0ab5e33c9
-+8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734
-diff -ruNp minix_src_clean/.git/refs/remotes/origin/master proj0/minix_src_clean/.git/refs/remotes/origin/master
---- minix_src_clean/.git/refs/remotes/origin/master	2013-04-07 20:53:39.422952335 -0700
-+++ proj0/minix_src_clean/.git/refs/remotes/origin/master	2013-04-10 20:28:53.647010097 -0700
-@@ -1 +1 @@
--7d2e9211b851deb88c969fe122d174c0ab5e33c9
-+8de1dc2e017d0b0e8ba768d59a119c6c3fb0f734
-diff -ruNp minix_src_clean/kernel/system/do_exec.c proj0/minix_src_clean/kernel/system/do_exec.c
---- minix_src_clean/kernel/system/do_exec.c	2013-02-15 03:18:13.000000000 -0800
-+++ proj0/minix_src_clean/kernel/system/do_exec.c	2013-04-10 19:12:38.527972556 -0700
-@@ -39,6 +39,9 @@ int do_exec(struct proc * caller, messag
-   	strncpy(name, "<unset>", PROC_NAME_LEN);
+diff -ruNp minix_src_clean/releasetools/Makefile clean/releasetools/Makefile
+--- minix_src_clean/releasetools/Makefile	2013-02-15 03:18:14.000000000 -0800
++++ clean/releasetools/Makefile	2013-05-16 11:34:59.624907174 -0700
+@@ -31,6 +31,7 @@ PROGRAMS+= ${PROGROOT}/drivers/tty/tty
+ PROGRAMS+= ${PROGROOT}/servers/mfs/mfs
+ PROGRAMS+= ${PROGROOT}/servers/vm/vm
+ PROGRAMS+= ${PROGROOT}/servers/pfs/pfs
++PROGRAMS+= ${PROGROOT}/servers/sema/sema
+ PROGRAMS+= ${PROGROOT}/servers/init/init
  
-   name[sizeof(name)-1] = '\0';
-+	
-+  // New line added here to print the name of the file that is being executed
-+  printf("executing... %s \n", name);
+ usage:	
+diff -ruNp minix_src_clean/servers/Makefile clean/servers/Makefile
+--- minix_src_clean/servers/Makefile	2013-02-15 03:18:14.000000000 -0800
++++ clean/servers/Makefile	2013-05-16 11:34:59.645891365 -0700
+@@ -5,12 +5,12 @@
  
-   /* Set process state. */
-   arch_proc_init(rp, (u32_t) m_ptr->PR_IP_PTR, (u32_t) m_ptr->PR_STACK_PTR, name);
+ .if ${MKIMAGEONLY} == "yes"
+ 
+-SUBDIR=	ds init mfs pfs pm rs sched vfs vm
++SUBDIR=	ds init mfs pfs pm rs sched vfs vm sema
+ 
+ .else
+ 
+ SUBDIR=	ds ext2 inet init ipc is iso9660fs \
+-	mfs pfs pm procfs rs sched vfs vm devman
++	mfs pfs pm procfs rs sched vfs vm devman sema
+ 
+ .if ${MACHINE_ARCH} == "i386"
+ SUBDIR+= hgfs vbfs
+@@ -18,4 +18,4 @@ SUBDIR+= hgfs vbfs
+ 
+ .endif
+ 
+-.include <bsd.subdir.mk>
++.include <bsd.subdir.mk>
+\ No newline at end of file
+diff -ruNp minix_src_clean/servers/rs/table.c clean/servers/rs/table.c
+--- minix_src_clean/servers/rs/table.c	2013-02-15 03:18:14.000000000 -0800
++++ clean/servers/rs/table.c	2013-05-16 11:34:59.651067676 -0700
+@@ -25,6 +25,7 @@ struct boot_image_priv boot_image_priv_t
+ {LOG_PROC_NR,  "log",    SRV_F  },
+ {MFS_PROC_NR,"fs_imgrd", SRV_F  },
+ {PFS_PROC_NR,  "pfs",    SRV_F  },
++{SEMA_PROC_NR,   "sema",     SRV_F   },
+ {INIT_PROC_NR, "init",   USR_F  },
+ {NULL_BOOT_NR, "",       0,     } /* null entry */
+ };
+@@ -39,6 +40,7 @@ struct boot_image_sys boot_image_sys_tab
+   { LOG_PROC_NR,      SRV_SF                            },
+   { MFS_PROC_NR,      0                                 },
+   { PFS_PROC_NR,      SRV_SF                            },
++  { SEMA_PROC_NR,       SRV_SF                          },
+   { DEFAULT_BOOT_NR,  SRV_SF                            } /* default entry */
+ };
+ 
+diff -ruNp minix_src_clean/servers/sema/glo.h clean/servers/sema/glo.h
+--- minix_src_clean/servers/sema/glo.h	1969-12-31 16:00:00.000000000 -0800
++++ clean/servers/sema/glo.h	2013-05-16 11:34:59.636004874 -0700
+@@ -0,0 +1,32 @@
++/* EXTERN should be extern except in table.c */
++#ifdef _TABLE
++#undef EXTERN
++#define EXTERN
++#endif
++
++/* Global variables. */
++// EXTERN struct mproc *mp;	/* ptr to 'mproc' slot of current process */
++// EXTERN int procs_in_use;	 how many processes are marked as IN_USE 
++// EXTERN char monitor_params[MULTIBOOT_PARAM_BUF_SIZE];
++// EXTERN struct kinfo kinfo;	/* kernel information */
++
++/* Misc.c */
++// extern struct utsname uts_val;	/* uname info */
++
++/* The parameters of the call are kept here. */
++// EXTERN message m;		/* the incoming message itself is kept here. */
++// EXTERN int who_p, who_e;	/* caller's proc number, endpoint */
++// EXTERN int call_nr;		/* system call number */
++
++extern int(*call_vec[]) (void);
++// EXTERN sigset_t core_sset;	/* which signals cause core images */
++// EXTERN sigset_t ign_sset;	/* which signals are by default ignored */
++// EXTERN sigset_t noign_sset;	 which signals cannot be ignored 
++
++// EXTERN u32_t system_hz;		/* System clock frequency. */
++// EXTERN int abort_flag;
++
++// EXTERN struct machine machine;		/* machine info */
++// #ifdef CONFIG_SMP
++// EXTERN int cpu_proc[CONFIG_MAX_CPUS];
++// #endif
+diff -ruNp minix_src_clean/servers/sema/Makefile clean/servers/sema/Makefile
+--- minix_src_clean/servers/sema/Makefile	1969-12-31 16:00:00.000000000 -0800
++++ clean/servers/sema/Makefile	2013-05-16 11:34:59.638071042 -0700
+@@ -0,0 +1,13 @@
++PROG=	sema
++SRCS=	semaphore.c
++
++DPADD+=	${LIBSYS} ${LIBTIMERS}
++LDADD+=	-lsys -ltimers
++
++MAN=
++
++BINDIR?= /usr/sbin
++
++CPPFLAGS.semaphore.c+=	-I${NETBSDSRCDIR}
++
++.include <minix.bootprog.mk>
+\ No newline at end of file
+diff -ruNp minix_src_clean/servers/sema/proto.h clean/servers/sema/proto.h
+--- minix_src_clean/servers/sema/proto.h	1969-12-31 16:00:00.000000000 -0800
++++ clean/servers/sema/proto.h	2013-05-16 11:34:59.641051229 -0700
+@@ -0,0 +1,19 @@
++/* struct prototypes */
++struct Node;
++struct Queue;
++struct Semaphore;
++
++/* Function prototypes. */
++
++/* semaphore.c */
++int main(void);
++int do_sem_init(message *m_ptr);
++int do_sem_down(message *m_ptr);
++int do_sem_up(message *m_ptr);
++int do_sem_release(message *m_ptr);
++
++struct Queue* init_queue();
++int dequeue(struct Queue* q);
++void enqueue(struct Queue* q, int process);
++int queue_size(struct Queue* q);
++void clear_queue(struct Queue* q);
+\ No newline at end of file
+diff -ruNp minix_src_clean/servers/sema/semaphore.c clean/servers/sema/semaphore.c
+--- minix_src_clean/servers/sema/semaphore.c	1969-12-31 16:00:00.000000000 -0800
++++ clean/servers/sema/semaphore.c	2013-05-16 11:34:59.634051200 -0700
+@@ -0,0 +1,277 @@
++#include "semaphore.h"
++#include <minix/keymap.h>
++#include <minix/callnr.h>
++#include <minix/com.h>
++#include <minix/ds.h>
++#include <minix/type.h>
++#include <minix/endpoint.h>
++#include <minix/minlib.h>
++#include <minix/type.h>
++#include <minix/vm.h>
++#include <minix/crtso.h>
++#include <signal.h>
++#include <stdlib.h>
++#include <fcntl.h>
++#include <sys/resource.h>
++#include <sys/utsname.h>
++#include <string.h>
++#include <machine/archtypes.h>
++#include <env.h>
++#include <stdio.h>
++#include <minix/ipc.h>
++
++#define DEBUG
++#ifdef DEBUG
++    #define    debug(f,...)    fprintf(stderr,f "\n",##__VA_ARGS__)
++#else
++    #define    debug(f,...)
++#endif
++
++struct Node
++{
++	int process;
++	struct Node* next;
++};
++
++struct Queue
++{
++	int size;
++	struct Node *rear, *front;
++};
++
++struct Semaphore
++{
++	int isValid; // 0 = is NOT initialized, 1 = is initialized
++	int value;
++	struct Queue *q;
++};
++
++int s = 1;
++int nextValue = 0, arraySize = 9;
++struct Semaphore *semaphores[10];
++
++/*===========================================================================*
++ *				main                                         *
++ *===========================================================================*/
++int main(void)
++{
++
++	debug("Semaphore service is now running..........");
++	// because its defined in glo.h
++	message m;
++	endpoint_t who_e, call_nr;
++	int result;
++
++	/* SEF local startup. */
++	sef_startup();
++
++	// initalize 10 empty semaphores
++	int k;
++	for(k=0; k<10; k++){
++		semaphores[k] = (struct Semaphore*) malloc(sizeof(struct Semaphore));
++		semaphores[k]->q = init_queue();
++		semaphores[k]->isValid = 0;
++	}
++
++	/* This is SEMAPHORE's main loop-  get work and do it, forever and forever. */
++	while (TRUE) {
++		int ipc_status;
++		result = OK;
++
++		//debug("IN THE WHILE STATE FOR SEMA");
++
++		/* wait for request message */
++		//if ((result = sef_receive_status(ANY, &m, &ipc_status)) != OK)
++		if ((result = receive(ANY, &m, &ipc_status)) != OK)
++			debug("SEMAPHORE receive error %d", result);
++		
++		//debug("SEMAPHORE recieved a message");
++
++		who_e = m.m_source;
++		call_nr = m.m_type;
++
++		// debug("Call Number: %d", call_nr);
++		// debug("Who: %d", who_e);
++
++		
++		switch(call_nr){
++			case SEM_INIT: result = do_sem_init(&m); break;
++			case SEM_DOWN: result = do_sem_down(&m); break;
++			case SEM_UP: result = do_sem_up(&m); break;
++			case SEM_RELEASE: result = do_sem_release(&m); break;
++			default: result = EINVAL;
++		}
++
++		if(result != EDONTREPLY){
++			message m_out;
++			m_out.m_type = result;
++			sendnb(who_e, &m_out);
++		}
++		//result = (*call_vec[call_nr])();
++	}
++
++	/* impossible to get here */
++	return 0;
++}
++
++int do_sem_init(message *m_ptr){
++	int start_value = m_ptr->m1_i1;
++	int j;
++	//debug("---------------  INIT");
++	//debug("server, Start value: %d", start_value);
++
++	if(start_value < 0){
++		return EPERM;
++	}
++	if(semaphores == NULL){ // out of memory failure
++		return ENOMEM;
++	}
++	if(arraySize >= nextValue){
++		int found = 0;
++		j=0;
++		while(found == 0 && j<arraySize){
++			debug(".....Sem: %d, isValid: %d", j, semaphores[j]->isValid);
++			if(semaphores[j]->isValid == 0){
++				found = 1;
++			}
++			else{
++				j++;
++			}
++		}
++		semaphores[j]->value = start_value;
++		semaphores[j]->isValid = 1;
++		debug("set sem: %d to %d", j, semaphores[j]->value);
++	}
++	else{
++		arraySize = arraySize + 10;
++		*semaphores = (struct Semaphore*) realloc(semaphores, sizeof(struct Semaphore*) * arraySize);
++		int k;
++		for(k=arraySize-nextValue; k<=arraySize; k++){
++			semaphores[k] = (struct Semaphore*) realloc(semaphores, sizeof(struct Semaphore) * arraySize);
++			semaphores[k]->q = init_queue();
++			semaphores[k]->isValid = 0;
++		}
++	}
++	if(j > nextValue){
++		nextValue = j;
++	}
++	debug("SEM_INIT, sem number: %d, start value: %d", j, semaphores[nextValue]->value);
++	arraySize++;
++	return j;
++}
++
++int do_sem_down(message *m_ptr){
++	int semNumber = m_ptr->m1_i2;
++	int source = m_ptr->m_source;
++	//debug("---------------  DOWN");
++	//debug("server, Semaphore number: %d", semNumber);
++	if(semaphores[semNumber]->isValid == 0){
++		return EINVAL;
++	}
++	else if(semaphores[semNumber]->value > 0){ // available semaphore then decresase
++		semaphores[semNumber]->value--;
++		debug("SEM_DOWN. seme#:%d,  old: %d, new: %d", semNumber, semaphores[semNumber]->value+1, semaphores[semNumber]->value);
++		return OK;
++	}
++	debug("about to add pid: %d to the queue", source);
++	// debug("address of q->front: %p", semaphores[semNumber]->q->front); 
++	// add it to the queue and return not reply 
++	enqueue(semaphores[semNumber]->q, source);
++	return EDONTREPLY;
++}
++
++int do_sem_up(message *m_ptr){
++	int semNumber = m_ptr->m1_i2;
++	//debug("---------------  UP");
++	//debug("server, Semaphore number: %d", semNumber);
++	if(semaphores[semNumber]->isValid == 0){
++		return EINVAL;
++	}
++
++	// add resource to that specific semaphore number
++	semaphores[semNumber]->value++; 
++	debug("SEM_UP, sem number: %d, new sem value: %d", semNumber, semaphores[semNumber]->value);
++
++	if(queue_size(semaphores[semNumber]->q) > 0){ // if processes blocked on semaphore then remove process
++		semaphores[semNumber]->value--;
++		message m;
++		m.m_type = OK;
++		m.m_source = dequeue(semaphores[semNumber]->q); // remove process from queue
++		sendnb(m.m_source, &m);
++	}
++
++	return OK;
++}
++
++int do_sem_release(message *m_ptr){
++	int semNumber = m_ptr->m1_i3;
++	//debug("---------------  RELEASED");
++	//debug("server, Semaphore: %d", semNumber);
++
++	/// set isValid to 0, and NULL all pointers
++	semaphores[semNumber]->isValid = 0;
++	semaphores[semNumber]->value = 0;
++	//semaphores[semNumber]->q = NULL;
++	clear_queue(semaphores[semNumber]->q);
++
++	debug("Sem: %d, was released. isValid: %d", semNumber, semaphores[semNumber]->isValid);
++
++	return OK;
++}
++
++
++
++
++struct Queue* init_queue(){
++	struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue));
++	q->rear = NULL;
++	q->front = NULL;
++	q->size = 0;
++	debug("initalized a que, q->front address: %p", q->front);
++	return q;
++}
++
++int dequeue(struct Queue* q){
++	struct Node *temp = q->front;
++	if(temp == NULL){
++		// queue empty, should never reach here
++		return -1;
++	}
++	q->front = q->front->next;
++	temp->next = NULL;
++	q->size--;
++	return temp->process;
++}
++
++void enqueue(struct Queue* q, int process){
++	struct Node *var = (struct Node*)malloc(sizeof(struct Node));
++	var->process = process;
++	//printf("null = %p\n", NULL);
++	//printf("about to check front of que, %p\n", q->front);
++	if(q->front == NULL){
++		//printf("inside if statement");
++		q->front = var;
++		q->front->next = NULL;
++		q->rear = q->front;
++	}
++	else{
++		//printf("inside else statement");
++		q->rear->next = var;
++		q->rear = var;
++		//front->next = NULL;
++	}
++	q->size++;
++	printf("%d was added to the queue and the new size: %d\n", q->rear->process, q->size);
++}
++
++
++int queue_size(struct Queue* q){
++	debug("size of queue: %d", q->size);
++	return q->size;
++}
++
++void clear_queue(struct Queue *q){
++	q->rear = NULL;
++	q->front = NULL;
++	q->size = 0;
++}
+\ No newline at end of file
+diff -ruNp minix_src_clean/servers/sema/semaphore.h clean/servers/sema/semaphore.h
+--- minix_src_clean/servers/sema/semaphore.h	1969-12-31 16:00:00.000000000 -0800
++++ clean/servers/sema/semaphore.h	2013-05-16 11:34:59.642934924 -0700
+@@ -0,0 +1,28 @@
++/* This is the master header for PM.  It includes some other files
++ * and defines the principal constants.
++ */
++#define _POSIX_SOURCE      1	/* tell headers to include POSIX stuff */
++#define _MINIX             1	/* tell headers to include MINIX stuff */
++#define _SYSTEM            1	/* tell headers that this is the kernel */
++
++/* The following are so basic, all the *.c files get them automatically. */
++#include <minix/config.h>	/* MUST be first */
++#include <sys/types.h>
++#include <minix/const.h>
++#include <minix/type.h>
++
++#include <fcntl.h>
++#include <unistd.h>
++#include <minix/syslib.h>
++#include <minix/sysutil.h>
++#include <minix/timers.h>
++#include <minix/param.h>
++
++#include <limits.h>
++#include <errno.h>
++#include <sys/param.h>
++
++//#include "const.h"
++//#include "type.h"
++#include "proto.h"
++#include "glo.h"
+\ No newline at end of file
+diff -ruNp minix_src_clean/sys/sys/errno.h clean/sys/sys/errno.h
+--- minix_src_clean/sys/sys/errno.h	2013-02-15 03:18:14.000000000 -0800
++++ clean/sys/sys/errno.h	2013-05-16 11:34:59.657973272 -0700
+@@ -71,6 +71,7 @@
+ #define ENOTEMPTY     (_SIGN 39 )  /* directory not empty */
+ #define ELOOP         (_SIGN 40 )  /* too many levels of symlinks detected */
+ #define ERESTART      (_SIGN 41 )  /* service restarted */
++
+ #define EIDRM         (_SIGN 43 )  /* Identifier removed */
+ #define EILSEQ        (_SIGN 44 )  /* illegal byte sequence */
+ #define	ENOMSG	      (_SIGN 45 )  /* No message of desired type */
+@@ -113,7 +114,7 @@
+ #define	ESOCKTNOSUPPORT	(_SIGN 82 ) /* Socket type not supported */
+ #define	ECONNABORTED  (_SIGN 83 )  /* Software caused connection abort */
+ #define	ETOOMANYREFS   (_SIGN 84 ) /* Too many references: can't splice */
+-
++#define EINUSE		(_SIGN 90)	/* unable to release semaphore */
+ #define EGENERIC      (_SIGN 99 )  /* generic error */
+ 
+ /* The following are not POSIX errors, but they can still happen. 

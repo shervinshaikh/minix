@@ -3,8 +3,7 @@
 #include "main.h"
 
 void Grad(int mutex, int gsem){
-	int i = 0;
-	while(i<20){ // change to run forever
+	while(1){ // change to run forever
 		sem_down(mutex);
 		int k;
 		for(k=0; k<=5; k++){
@@ -12,7 +11,6 @@ void Grad(int mutex, int gsem){
 			GradEat(gsem, k);
 		}
 		sem_up(mutex);	
-		i++;
 	}
 	return;
 }

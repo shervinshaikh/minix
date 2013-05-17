@@ -3,10 +3,8 @@
 #include "main.h"
 
 void UGrad(int mutex, int usem){
-	int i = 0;
-	while(i<20){ // change to run forever
+	while(1){ // change to run forever
 		sem_down(mutex);
-
 		if(fork() == 0){
 			UGrad1(usem);
 		}
@@ -14,7 +12,6 @@ void UGrad(int mutex, int usem){
 			UGrad2(usem);
 		}
 		sem_up(mutex);
-		i++;
 	}
 	return;
 }
