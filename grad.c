@@ -3,7 +3,7 @@
 #include "main.h"
 
 void Grad(int mutex, int gsem){
-	while(1){ // change to run forever
+	while(1){
 		sem_down(mutex);
 		int k;
 		for(k=0; k<=5; k++){

@@ -3,7 +3,7 @@
 #include "main.h"
 
 void UGrad(int mutex, int usem){
-	while(1){ // change to run forever
+	while(1){
 		sem_down(mutex);
 		if(fork() == 0){
 			UGrad1(usem);
